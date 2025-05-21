@@ -6,7 +6,7 @@
 /*   By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 21:37:22 by tripham           #+#    #+#             */
-/*   Updated: 2025/05/18 23:02:26 by tripham          ###   ########.fr       */
+/*   Updated: 2025/05/21 22:41:18 by tripham          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,24 @@
 # include "cub3d.h"
 
 typedef struct s_cub	t_cub;
+
+typedef enum e_ele_type
+{
+	NO,
+	SO,
+	WE,
+	EA,
+	F,
+	C
+}	t_ele_type;
+
 /*
 *char   *no;   	        -> file path for the North wall texture
 *char   *so;   	        -> file path for the South wall texture
 *char   *we;   	        -> file path for the West wall texture
 *char   *ea;   	        -> file path for the East wall texture
-*char   **grid;     	-> 2D map array containing characters: '0', '1', 'N', 'S', 'E', 'W'
+*char   **grid;     	-> 2D map array containing characters:
+ '0', '1', 'N', 'S', 'E', 'W'
 *int	f_color;    	-> floor color
 *int	c_color;  	-> ceiling color
 *int      width;    	-> number of columns in the map
@@ -47,5 +59,7 @@ typedef struct s_map
 
 //void	read_map(char *map_file, t_map *map);
 bool	dir_ele_done(t_map *map);
+int		read_map(int fd, t_cub *cub);
+int		read_ele(t_map *map, char *line);
 
 #endif

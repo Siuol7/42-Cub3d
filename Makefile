@@ -6,7 +6,7 @@
 #    By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/18 22:10:11 by tripham           #+#    #+#              #
-#    Updated: 2025/05/19 19:28:51 by tripham          ###   ########.fr        #
+#    Updated: 2025/05/21 21:05:10 by tripham          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,46 +20,44 @@ INCLUDES   = -I includes \
              -I Library/ft_printf_fd \
              -I libs/MLX42/include/MLX42
 
-# --- LINK FLAGS ---
-MLX_LINK   = -Llibs/MLX42/build -lmlx42 -lglfw -ldl -pthread -lm
-
 # --- DIRECTORIES ---
-SRC_DIR    = Srcs
-LIB_DIR    = Library
-GNL_DIR    = $(LIB_DIR)/get_next_line
-LIBFT_DIR  = $(LIB_DIR)/libft
-PRINTF_DIR = $(LIB_DIR)/ft_printf_fd
-MLX42_DIR  = libs/MLX42
+SRC_DIR		= Srcs
+PARSE_DIR	= Srcs/parsing
+LIB_DIR		= Library
+GNL_DIR		= $(LIB_DIR)/get_next_line
+LIBFT_DIR	= $(LIB_DIR)/libft
+PRINTF_DIR	= $(LIB_DIR)/ft_printf_fd
+MLX42_DIR	= libs/MLX42
 
 # --- SOURCE FILES ---
 GNL_SRCS   = $(GNL_DIR)/get_next_line.c \
              $(GNL_DIR)/get_next_line_utils.c
 
-PARSE_SRCS = $(SRC_DIR)/parsing/map/map_validation.c \
-             $(SRC_DIR)/parsing/map/map_utils.c			\
-			 $(SRC_DIR)/parsing/utils_parsing/ft_error.c	\
-			 $(SRC_DIR)/parsing/utils_parsing/ft_space.c	
-#$(SRC_DIR)/parsing/read_map.c 
+PARSE_SRCS = $(PARSE_DIR)/map/map_validation.c \
+             $(PARSE_DIR)/map/map_utils.c			\
+			 $(PARSE_DIR)/map/read_ele.c			\
+			 $(PARSE_DIR)/map/read_map.c				\
+			 $(PARSE_DIR)/utils_parsing/ft_error.c	\
+			 $(PARSE_DIR)/utils_parsing/ft_space.c	\
+			 $(PARSE_DIR)/utils_parsing/ft_2d_len.c	\
+			 $(PARSE_DIR)/utils_parsing/ft_clean_2d.c	\
+			 $(PARSE_DIR)/utils_parsing/ft_readline.c
 
 MAIN_SRCS  = $(SRC_DIR)/main.c
 
-# add other .c files here...
-OTHER_SRCS = #$(SRC_DIR)/ray_casting/ray_casting.c \
-             $(SRC_DIR)/event/key_inputs.c \
-
-SRCS       = $(MAIN_SRCS) $(PARSE_SRCS) $(GNL_SRCS) $(OTHER_SRCS)
+SRCS       = $(MAIN_SRCS) $(PARSE_SRCS) $(GNL_SRCS)
 OBJS       = $(SRCS:.c=.o)
 
 # --- LIBRARIES ---
 LIBFT      = $(LIBFT_DIR)/libft.a
 PRINTF     = $(PRINTF_DIR)/libftprintf.a
 
-# --- EXECUTABLE ---
 NAME       = cub3D
+
+MLX_LINK   = -Llibs/MLX42/build -lmlx42 -lglfw -ldl -pthread -lm
 
 all: mlx42 $(LIBFT) $(PRINTF) $(NAME)
 
-# clone & build MLX42 if necessary
 mlx42:
 	@if [ ! -d "$(MLX42_DIR)" ]; then \
 	  git clone https://github.com/codam-coding-college/MLX42.git $(MLX42_DIR); \
@@ -68,19 +66,15 @@ mlx42:
 	  rm -rf $(MLX42_DIR)/.git; \
 	fi
 
-# build libft
 $(LIBFT):
 	@$(MAKE) -C $(LIBFT_DIR)
 
-# build ft_printf
 $(PRINTF):
 	@$(MAKE) -C $(PRINTF_DIR)
 
-# link final binary
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LIBFT) $(PRINTF) $(MLX_LINK) -o $@
 
-# generic rule to compile .c -> .o
 %.o: %.c
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
@@ -97,5 +91,4 @@ fclean: clean
 
 re: fclean all
 
-# --- PHONY ---
 .PHONY: all clean fclean re mlx42

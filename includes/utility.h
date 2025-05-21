@@ -6,7 +6,7 @@
 /*   By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 21:41:09 by tripham           #+#    #+#             */
-/*   Updated: 2025/05/18 23:10:34 by tripham          ###   ########.fr       */
+/*   Updated: 2025/05/21 23:44:30 by tripham          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,20 @@ typedef struct s_color
 	uint32_t	a;
 }	t_color;
 
-int	map_validation(char *path);
+int		map_validation(char *path);
 
 // parsing utils
 
-int	ft_is_all_white_spaces(char *s);
+char	*ft_readline(int fd, int *eof);
+int		ft_is_all_white_spaces(char *s);
+int		ft_2d_len(char **arr);
+void	ft_clean_2d(char ***arr);
+
+// ERROR
+int		multi_err_ret(char *str1, char *str2, int num);
+char	*error_ret_null(char *str);
+int		multi_err_ret(char *str1, char *str2, int num);
+int		error_ret(char *str, int return_code);
+void	ft_error(char *str);
 
 #endif

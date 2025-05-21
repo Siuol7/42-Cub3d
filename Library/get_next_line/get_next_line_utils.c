@@ -6,106 +6,103 @@
 /*   By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 19:55:42 by tripham           #+#    #+#             */
-/*   Updated: 2025/05/18 23:04:54 by tripham          ###   ########.fr       */
+/*   Updated: 2025/05/21 20:53:02 by tripham          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strdup_gnl(char *s1)
+int	ft_strlen_gnl(char *str)
 {
-	char	*s2;
-	size_t	len;
-	size_t	i;
+	int	len;
 
-	if (!s1)
-		return (NULL);
+	if (!str)
+		return (0);
+	len = 0;
+	while (str[len])
+		len++;
+	return (len);
+}
+
+char	*ft_strncpy_gnl(char *dest, char *src, unsigned int len)
+{
+	unsigned int	i;
+
 	i = 0;
-	len = ft_strlen_gnl(s1);
-	s2 = malloc(sizeof(char) * (len + 1));
-	if (!s2)
-		return (NULL);
+	while (src[i] && i < len)
+	{
+		dest[i] = src[i];
+		i++;
+	}
 	while (i < len)
-	{
-		s2[i] = s1[i];
-		i++;
-	}
-	s2[i] = '\0';
-	return (s2);
+		dest[i++] = '\0';
+	return (dest);
 }
 
-size_t	ft_strlen_gnl(char *s1)
+int	ft_strchr_gnl(char *main_buffer, char c)
 {
-	size_t	i;
+	unsigned int	i;
 
 	i = 0;
-	while (s1[i] != '\0')
-		i++;
-	return (i);
-}
-
-void	*ft_memcpy_gnl(void *des, const void *src, size_t len)
-{
-	size_t		i;
-	char		*destination;
-	const char	*source;
-
-	i = 0;
-	destination = (char *)des;
-	source = (const char *)src;
-	if (!destination && !source)
-		return (NULL);
-	if (des == src)
-		return (des);
-	if (des != src)
+	while (main_buffer[i])
 	{
-		while (i < len)
-		{
-			destination[i] = source[i];
-			i++;
-		}
+		if (main_buffer[i] == c)
+			return (1);
+		i++;
 	}
-	return (des);
+	return (0);
 }
 
-char	*ft_strjoin_gnl(char *s1, char *s2)
+char	*ft_buffer_join(char *main_buffer, char *sub_buffer)
 {
-	char	*res;
-	size_t	s1_len;
-	size_t	s2_len;
+	size_t	total;
+	size_t	main_len;
+	size_t	sub_len;
+	char	*final;
 
-	if (!s1 && !s2)
-		return (ft_strdup_gnl(""));
-	if (!s1)
-		return (ft_strdup_gnl(s2));
-	if (!s2)
-		return (ft_strdup_gnl(s1));
-	s1_len = ft_strlen_gnl(s1);
-	s2_len = ft_strlen_gnl(s2);
-	res = malloc((sizeof(char)) * (s1_len + s2_len + 1));
-	if (!res)
-		return (NULL);
-	ft_memcpy_gnl(res, s1, s1_len);
-	ft_memcpy_gnl((res + s1_len), s2, s2_len);
-	res[s1_len + s2_len] = '\0';
-	free (s1);
-	return (res);
+	if (!main_buffer)
+	{
+		main_buffer = malloc(1);
+		if (!main_buffer)
+			return (NULL);
+		main_buffer[0] = '\0';
+	}
+	total = 0;
+	main_len = ft_strlen_gnl(main_buffer);
+	sub_len = ft_strlen_gnl(sub_buffer);
+	total = main_len + sub_len;
+	final = malloc(total + 1);
+	if (!final)
+		return (ft_free(&main_buffer));
+	ft_strncpy_gnl(final, main_buffer, main_len);
+	ft_strncpy_gnl(final + main_len, sub_buffer, sub_len);
+	final[main_len + sub_len] = '\0';
+	ft_free(&main_buffer);
+	return (final);
 }
 
-char	*ft_strchr_gnl(const char *s, int c)
+char	*ft_substring(char *main_buffer, int start, int end)
 {
+	char	*result;
+	int		total;
 	int		i;
-	char	chr;
 
+	if (!main_buffer)
+		return (NULL);
+	if (start >= ft_strlen_gnl(main_buffer))
+		total = 0;
+	else
+		total = end - start;
+	result = malloc(total + 1);
+	if (!result)
+		return (NULL);
 	i = 0;
-	chr = c;
-	while (s[i])
+	while (start < end)
 	{
-		if (s[i] == chr)
-			return ((char *)&s[i]);
+		result[i] = main_buffer[start];
 		i++;
+		start++;
 	}
-	if (s[i] == chr)
-		return ((char *)&s[i]);
-	return (NULL);
+	result[i] = '\0';
+	return (result);
 }

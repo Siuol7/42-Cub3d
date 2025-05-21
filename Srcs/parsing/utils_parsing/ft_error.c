@@ -6,14 +6,37 @@
 /*   By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 14:29:08 by tripham           #+#    #+#             */
-/*   Updated: 2025/05/18 21:00:00 by tripham          ###   ########.fr       */
+/*   Updated: 2025/05/21 22:20:28 by tripham          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	ft_multi_err_ret(char *str1, char *str2, int num)
+char	*error_ret_null(char *str)
+{
+	ft_error(str);
+	return (NULL);
+}
+
+int	multi_err_ret(char *str1, char *str2, int num)
 {
 	ft_printf_fd(2, "\n[Error]\n%s: %s\n\n", str1, str2);
 	return (num);
+}
+
+int	error_ret(char *str, int return_code)
+{
+	ft_error(str);
+	return (return_code);
+}
+
+void	ft_error(char *str)
+{
+	if (mlx_errno)
+		ft_printf_fd(2, "\n[Error MLX]\n%s: %s\n\n", str,
+			mlx_strerror(mlx_errno));
+	else if (errno)
+		ft_printf_fd(2, "\n[Error System]\n%s: %s\n\n", str, strerror(errno));
+	else
+		ft_printf_fd(2, "\n[Error]\n%s\n", str);
 }

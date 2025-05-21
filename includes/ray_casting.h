@@ -6,7 +6,7 @@
 /*   By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 21:39:54 by tripham           #+#    #+#             */
-/*   Updated: 2025/05/18 23:00:30 by tripham          ###   ########.fr       */
+/*   Updated: 2025/05/21 22:58:18 by tripham          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define RAY_CASTING_H
 
 # include "cub3d.h"
-#include "utility.h"
+# include "utility.h"
 /*
 *	HORIZONTAL,
 *	VERTICAL

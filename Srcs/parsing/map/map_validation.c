@@ -6,7 +6,7 @@
 /*   By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 20:49:40 by tripham           #+#    #+#             */
-/*   Updated: 2025/05/18 22:52:22 by tripham          ###   ########.fr       */
+/*   Updated: 2025/05/21 22:40:18 by tripham          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	map_validation(char *path)
 {
-	int fd;
-	int i;
+	int	fd;
+	int	i;
 
 	if (!path || ft_is_all_white_spaces(path))
 	{

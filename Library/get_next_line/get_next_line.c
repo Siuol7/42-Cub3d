@@ -6,109 +6,97 @@
 /*   By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:42:44 by tripham           #+#    #+#             */
-/*   Updated: 2025/05/18 23:03:40 by tripham          ###   ########.fr       */
+/*   Updated: 2025/05/21 20:53:40 by tripham          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char	*ft_free(char **s)
+char	*ft_free(char **buffer)
 {
-	if (*s)
-	{
-		free(*s);
-		*s = NULL;
-	}
+	free(*buffer);
+	*buffer = NULL;
 	return (NULL);
 }
 
-static char	*ft_read(int fd, char *big_buf, int been_read, char *small_buf)
+static char	*reset_buffer(char *buffer)
 {
-	char	*tmp;
+	char	*temp;
+	int		newline;
 
-	while (been_read)
+	if (!buffer)
+		return (NULL);
+	newline = 0;
+	while (buffer[newline] && buffer[newline] != '\n')
+		newline++;
+	if (buffer[newline] == '\n')
+		newline++;
+	temp = ft_substring(buffer, newline, ft_strlen_gnl(buffer));
+	if (!temp)
+		return (ft_free(&buffer));
+	ft_free(&buffer);
+	return (temp);
+}
+
+static char	*get_line(char *buffer)
+{
+	char	*temp_line;
+	int		newline;
+
+	if (!buffer || !(*buffer))
+		return (NULL);
+	newline = 0;
+	while (buffer[newline] && buffer[newline] != '\n')
+		newline++;
+	if (buffer[newline] == '\n')
+		newline++;
+	temp_line = ft_substring(buffer, 0, newline);
+	if (!temp_line)
+		return (NULL);
+	return (temp_line);
+}
+
+static char	*update_buffer(char *buffer, int fd)
+{
+	char	*sub_buffer;
+	int		readbytes;
+
+	sub_buffer = malloc(BUFFER_SIZE + 1);
+	if (!sub_buffer)
+		return (NULL);
+	readbytes = 1;
+	while ((buffer && !ft_strchr_gnl(buffer, '\n') && readbytes > 0) || !buffer)
 	{
-		been_read = read(fd, small_buf, BUFFER_SIZE);
-		if (been_read < 0)
+		readbytes = read(fd, sub_buffer, BUFFER_SIZE);
+		if (!sub_buffer)
+			return (ft_free(&buffer));
+		if (readbytes < 0)
 		{
-			free(small_buf);
-			return (ft_free(&big_buf));
+			free(sub_buffer);
+			return (ft_free(&buffer));
 		}
-		small_buf[been_read] = '\0';
-		tmp = big_buf;
-		big_buf = ft_strjoin_gnl(big_buf, small_buf);
-		if (!big_buf)
-		{
-			free (small_buf);
-			return (ft_free(&tmp));
-		}
-		if (ft_strchr_gnl(big_buf, '\n'))
+		if (readbytes == 0)
 			break ;
+		sub_buffer[readbytes] = '\0';
+		buffer = ft_buffer_join(buffer, sub_buffer);
 	}
-	free(small_buf);
-	return (big_buf);
-}
-
-static char	*ft_extract_read_line(char *big_buf)
-{
-	char	*read_line;
-	int		i;
-
-	i = 0;
-	if (!big_buf[i])
-		return (NULL);
-	while (big_buf[i] != '\n' && big_buf[i] != '\0')
-		i++;
-	if (big_buf[i] == '\n')
-		i++;
-	read_line = malloc((i + 1) * sizeof(char));
-	if (!read_line)
-		return (NULL);
-	ft_memcpy_gnl(read_line, big_buf, i);
-	read_line[i] = '\0';
-	return (read_line);
-}
-
-static void	ft_get_remainder(char **big_buf)
-{
-	int		i;
-	char	*new_big_buf;
-
-	i = 0;
-	while ((*big_buf)[i] != '\n' && (*big_buf)[i] != '\0')
-		i++;
-	if ((*big_buf)[i] == '\n')
-		i++;
-	if (!*(big_buf + i))
-	{
-		ft_free(big_buf);
-		return ;
-	}
-	new_big_buf = ft_strdup_gnl(*big_buf + i);
-	free(*big_buf);
-	*big_buf = new_big_buf;
+	free(sub_buffer);
+	return (buffer);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*big_buf;
-	char		*small_buf;
-	char		*line;
-	int			been_read;
+	static char		*buffer;
+	char			*line;
 
-	line = NULL;
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (ft_free(&big_buf));
-	been_read = 1;
-	small_buf = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (!small_buf)
-		return (ft_free(&big_buf));
-	big_buf = ft_read(fd, big_buf, been_read, small_buf);
-	if (!big_buf)
 		return (NULL);
-	line = ft_extract_read_line(big_buf);
+	buffer = update_buffer(buffer, fd);
+	if (!buffer)
+		return (NULL);
+	line = get_line(buffer);
 	if (!line)
-		return (ft_free(&big_buf));
-	ft_get_remainder(&big_buf);
+		ft_free(&buffer);
+	buffer = reset_buffer(buffer);
 	return (line);
 }
