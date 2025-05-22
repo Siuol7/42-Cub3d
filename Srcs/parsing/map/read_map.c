@@ -6,7 +6,7 @@
 /*   By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 18:28:14 by caonguye          #+#    #+#             */
-/*   Updated: 2025/05/21 22:25:56 by tripham          ###   ########.fr       */
+/*   Updated: 2025/05/22 23:09:03 by tripham          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ int	read_map(int fd, t_cub *cub)
 			break ;
 		}
 		if (process_line(cub, line) == EXIT_FAILURE)
-			return (map_error(&cub->map, line, fd));
+			return (0); //(map_error(&cub->map, line, fd));
 		free(line);
 	}
-	return (grid_validation(cub, fd));
+	return (0);//(grid_validation(cub, fd));
 }

@@ -6,7 +6,7 @@
 /*   By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 21:41:09 by tripham           #+#    #+#             */
-/*   Updated: 2025/05/21 23:44:30 by tripham          ###   ########.fr       */
+/*   Updated: 2025/05/22 22:53:51 by tripham          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ char	*ft_readline(int fd, int *eof);
 int		ft_is_all_white_spaces(char *s);
 int		ft_2d_len(char **arr);
 void	ft_clean_2d(char ***arr);
+int		cnt_comma(char *str);
+int		get_color(char **rgb, int *c_or_f);
 
 // ERROR
 int		multi_err_ret(char *str1, char *str2, int num);
