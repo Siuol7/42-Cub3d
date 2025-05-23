@@ -6,7 +6,7 @@
 /*   By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 19:46:56 by tripham           #+#    #+#             */
-/*   Updated: 2025/05/22 23:08:27 by tripham          ###   ########.fr       */
+/*   Updated: 2025/05/23 21:57:15 by tripham          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,17 @@ static int	asign_ele(t_map *map, char **splitted_line, int ele_type)
 {
 	if (ele_type == F || ele_type == C)
 		return (parse_color(map, splitted_line, ele_type));
-	// continue with validate png
-	return (0);
+	if (validate_png(splitted_line[1]) == EXIT_FAILURE)
+		return (EXIT_FAILURE);
+	if (ele_type == NO)
+		map->no = ft_strdup(splitted_line[1]);
+	else if (ele_type == SO)
+		map->so = ft_strdup(splitted_line[1]);
+	else if (ele_type == WE)
+		map->we = ft_strdup(splitted_line[1]);
+	else if (ele_type == EA)
+		map->ea = ft_strdup(splitted_line[1]);
+	return (EXIT_SUCCESS);
 }
 
 static int	parse_ele(t_map *map, char **splitted_line, int ele_type)
@@ -75,16 +84,17 @@ static int	parse_ele(t_map *map, char **splitted_line, int ele_type)
 		|| (ele_type == EA && map->ea)
 		|| (ele_type == F && map->f_color)
 		|| (ele_type == C && map->c_color))
-		{
-			ft_clean_2d(&splitted_line);
-			return (error_ret("Error: Duplication Elements.", EXIT_FAILURE));
-		}
-		if (asign_ele(map, splitted_line, ele_type) == EXIT_FAILURE)
-		{
-			ft_clean_2d(&splitted_line);
-			return (EXIT_FAILURE);
-		}
-	return (0);
+	{
+		ft_clean_2d(&splitted_line);
+		return (error_ret("Error: Duplication Elements.", EXIT_FAILURE));
+	}
+	if (asign_ele(map, splitted_line, ele_type) == EXIT_FAILURE)
+	{
+		ft_clean_2d(&splitted_line);
+		return (EXIT_FAILURE);
+	}
+	ft_clean_2d(&splitted_line);
+	return (EXIT_SUCCESS);
 }
 
 int	read_ele(t_map *map, char *line)
