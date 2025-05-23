@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:56:04 by caonguye          #+#    #+#             */
-/*   Updated: 2025/05/21 23:50:30 by tripham          ###   ########.fr       */
+/*   Updated: 2025/05/23 19:42:12 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-// # define WIDTH 1280
-// # define HEIGHT 960
-// # define PI 3.14159265359
+# define WIDTH 1280
+# define HEIGHT 960
+# define PI 3.14159265359
 
 # include <stdio.h>
 //# include <float.h>
