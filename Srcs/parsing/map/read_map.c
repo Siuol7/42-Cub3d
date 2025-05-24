@@ -6,7 +6,7 @@
 /*   By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 18:28:14 by caonguye          #+#    #+#             */
-/*   Updated: 2025/05/23 21:54:47 by tripham          ###   ########.fr       */
+/*   Updated: 2025/05/24 15:19:51 by tripham          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,11 @@ static int	process_line(t_cub *cub, char *line)
 	{
 		if (!line[0] && cub->map.grid && !cub->map.grid[0])
 			return (EXIT_SUCCESS)
+		else if (!line[0] && cub->map.grid && cub->map.grid[0])
+			return (error_ret("Elements or map is invalid.", EXIT_FAILURE));
+		return (read_grid(&cum->map, line));
 	}
-	return (0);
+	return (EXIT_SUCCESS);
 }
 
 int	read_map(int fd, t_cub *cub)

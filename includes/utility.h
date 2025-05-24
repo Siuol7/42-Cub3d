@@ -6,7 +6,7 @@
 /*   By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 21:41:09 by tripham           #+#    #+#             */
-/*   Updated: 2025/05/22 22:53:51 by tripham          ###   ########.fr       */
+/*   Updated: 2025/05/24 17:20:10 by tripham          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,13 @@ int		ft_2d_len(char **arr);
 void	ft_clean_2d(char ***arr);
 int		cnt_comma(char *str);
 int		get_color(char **rgb, int *c_or_f);
-
 // ERROR
 int		multi_err_ret(char *str1, char *str2, int num);
 char	*error_ret_null(char *str);
 int		multi_err_ret(char *str1, char *str2, int num);
 int		error_ret(char *str, int return_code);
 void	ft_error(char *str);
+void	clean_map(t_map *map);
+int		map_err(t_map *map, char *line, int fd);
 
 #endif

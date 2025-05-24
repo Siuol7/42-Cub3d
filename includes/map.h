@@ -6,7 +6,7 @@
 /*   By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 21:37:22 by tripham           #+#    #+#             */
-/*   Updated: 2025/05/23 19:22:18 by tripham          ###   ########.fr       */
+/*   Updated: 2025/05/24 18:14:09 by tripham          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int		read_map(int fd, t_cub *cub);
 int		read_ele(t_map *map, char *line);
 
 // check valid png
-int	validate_png(char *path);
+int		validate_png(char *path);
+bool	is_closed(t_map *map, t_dpoint start);
 
 #endif

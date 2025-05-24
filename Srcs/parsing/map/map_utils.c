@@ -6,7 +6,7 @@
 /*   By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 21:32:35 by tripham           #+#    #+#             */
-/*   Updated: 2025/05/22 23:07:04 by tripham          ###   ########.fr       */
+/*   Updated: 2025/05/24 17:16:22 by tripham          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@ bool	dir_ele_done(t_map *map)
 
 int	map_err(t_map *map, char *line, int fd)
 {
-	(void)map;
-	// clean_map(map);
+	clean_map(map);
 	if (line)
 		free(line);
 	close (fd);
@@ -42,4 +41,20 @@ int	cnt_comma(char *str)
 		str++;
 	}
 	return (comma);
+}
+
+void	clean_map(t_map *map)
+{
+	if (!map || !map->grid)
+		return ;
+	if (map->no_path)
+		error_ret_null(&map->no);
+	if (map->so)
+		error_ret_null(&map->so);
+	if (map->we)
+		error_ret_null(&map->we);
+	if (map->ea)
+		error_ret_null(&map->ea);
+	if (map->grid)
+		ft_clean_2d(&map->grid);
 }
