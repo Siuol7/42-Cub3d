@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 18:15:21 by caonguye          #+#    #+#             */
-/*   Updated: 2025/05/23 22:26:15 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/05/23 22:30:23 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ void	system_init(t_cub *c)
 {
 	mlx_packs_init(c);
 	ray_init(c);
-	asst_init(c);
+	asset_init(c);
 	hook_init(c);
 }
