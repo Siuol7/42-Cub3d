@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:56:04 by caonguye          #+#    #+#             */
-/*   Updated: 2025/05/23 19:42:12 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/05/26 13:26:09 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # include "ray_casting.h"
 # include "utility.h"
 # include "MLX42.h"
+# include "assets.h"
 
 /* Complete application context
  void        *mlx;       // MLX42 context
@@ -43,6 +44,7 @@ typedef struct s_cub
 	int32_t		mouse_x;
 	int32_t		mouse_y;
 	t_ray		**rays;
+	t_assets	assets;
 }	t_cub;
 
 #endif
