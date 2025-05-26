@@ -6,19 +6,20 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:56:04 by caonguye          #+#    #+#             */
-/*   Updated: 2025/05/26 13:26:09 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/05/26 19:58:39 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# define WIDTH 1280
-# define HEIGHT 960
+// # define WIDTH 1280
+// # define HEIGHT 960
 # define PI 3.14159265359
+# define CELL_PX 32
 
 # include <stdio.h>
-//# include <float.h>
+// # include <float.h>
 # include <math.h>
 # include "libft.h"
 # include "ft_printf.h"
@@ -27,7 +28,7 @@
 # include "ray_casting.h"
 # include "utility.h"
 # include "MLX42.h"
-# include "assets.h"
+# include "asset_manager.h"
 
 /* Complete application context
  void        *mlx;       // MLX42 context
