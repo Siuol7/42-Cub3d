@@ -6,7 +6,7 @@
 /*   By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 21:32:35 by tripham           #+#    #+#             */
-/*   Updated: 2025/05/24 17:16:22 by tripham          ###   ########.fr       */
+/*   Updated: 2025/05/26 19:39:32 by tripham          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	cnt_comma(char *str)
 	comma = 0;
 	if (!str)
 		return (0);
-	while(*str)
+	while (*str)
 	{
 		if (*str == ',')
 			comma++;
@@ -47,14 +47,14 @@ void	clean_map(t_map *map)
 {
 	if (!map || !map->grid)
 		return ;
-	if (map->no_path)
-		error_ret_null(&map->no);
+	if (map->no)
+		free_null(&map->no);
 	if (map->so)
-		error_ret_null(&map->so);
+		free_null(&map->so);
 	if (map->we)
-		error_ret_null(&map->we);
+		free_null(&map->we);
 	if (map->ea)
-		error_ret_null(&map->ea);
+		free_null(&map->ea);
 	if (map->grid)
 		ft_clean_2d(&map->grid);
 }

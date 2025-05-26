@@ -6,7 +6,7 @@
 /*   By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 16:24:40 by tripham           #+#    #+#             */
-/*   Updated: 2025/05/24 17:09:15 by tripham          ###   ########.fr       */
+/*   Updated: 2025/05/26 18:52:38 by tripham          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	is_real_png(char *path)
 		|| header[5] != 0x0A || header[6] != 0x1A || header[7] != 0x0A)
 	{
 		close(fd);
-		return (multi_error_ret(path, "Not a valid PNG file", EXIT_FAILURE));
+		return (multi_err_ret(path, "Invalid PNG file.", EXIT_FAILURE));
 	}
 	close(fd);
 	return (EXIT_SUCCESS);
@@ -35,11 +35,11 @@ int	validate_png(char *path)
 {
 	int	len;
 
-	if (!path[0] || ft_is_all_white_spaces(path))
-		return (error_ret(path, "Path is empty.", EXIT_FAILURE));
+	if (!path || !path[0] || ft_is_all_white_spaces(path))
+		return (multi_err_ret(path, "Path is empty", EXIT_FAILURE));
 	len = ft_strlen(path);
 	if (len < 5 || ft_strncmp(path + len - 4, ".png", 4) != 0)
-		return (ft_multi_error_ret(path, ".png file is invalid.", EXIT_FAILURE));
+		return (multi_err_ret(path, "Invalid .png file format.", EXIT_FAILURE));
 	if (access(path, F_OK) == -1)
 		return (error_ret(path, EXIT_FAILURE));
 	return (is_real_png(path));

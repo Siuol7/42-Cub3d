@@ -6,7 +6,7 @@
 /*   By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 19:46:56 by tripham           #+#    #+#             */
-/*   Updated: 2025/05/23 21:57:15 by tripham          ###   ########.fr       */
+/*   Updated: 2025/05/26 19:37:10 by tripham          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,24 @@ static int	ele_type_check(char *arr)
 static int	parse_color(t_map *map, char **splitted_line, int ele_type)
 {
 	char	**rgb;
-	
+	int		len;
+
 	if (cnt_comma(splitted_line[1]) != 2)
 		return (error_ret("Color format invalid.", EXIT_FAILURE));
+	len = ft_strlen(splitted_line[1]);
+	if (len == 0 || splitted_line[1][len - 1] == ',')
+		return (error_ret("Color format invalid (trailing comma).",
+				EXIT_FAILURE));
 	rgb = ft_split(splitted_line[1], ',');
 	if (!rgb)
 		return (error_ret("Error: split failed.", EXIT_FAILURE));
-	if (ft_2d_len(rgb) != 3 
-		|| splitted_line[1][ft_strlen(splitted_line[1] - 1) == ','])
+	if (ft_2d_len(rgb) != 3)
 	{
 		ft_clean_2d(&rgb);
-		return (error_ret("Color format invalid.", EXIT_FAILURE));
+		return (error_ret("Color must have exactly 3 values.", EXIT_FAILURE));
 	}
-	if ((ele_type == F
-		&& (get_color(rgb, &map->f_color) == EXIT_FAILURE))
-		|| (ele_type == C
-		&& (get_color(rgb, &map->c_color) == EXIT_FAILURE)))
+	if ((ele_type == F && get_color(rgb, &map->f_color) == EXIT_FAILURE)
+		|| (ele_type == C && get_color(rgb, &map->c_color) == EXIT_FAILURE))
 	{
 		ft_clean_2d(&rgb);
 		return (EXIT_FAILURE);
@@ -107,7 +109,6 @@ int	read_ele(t_map *map, char *line)
 	if (!line[0])
 		return (EXIT_SUCCESS);
 	splitted_line = ft_split(line, ' ');
-	printf("splited: %s\n", splitted_line[0]);
 	if (!splitted_line)
 		return (error_ret("Error: ft_split failed.", EXIT_FAILURE));
 	size = ft_2d_len(splitted_line);

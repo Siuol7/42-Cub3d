@@ -6,7 +6,7 @@
 /*   By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 18:28:14 by caonguye          #+#    #+#             */
-/*   Updated: 2025/05/24 15:19:51 by tripham          ###   ########.fr       */
+/*   Updated: 2025/05/26 19:16:27 by tripham          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,12 @@ static int	process_line(t_cub *cub, char *line)
 	else
 	{
 		if (!line[0] && cub->map.grid && !cub->map.grid[0])
-			return (EXIT_SUCCESS)
+		{
+			return (EXIT_SUCCESS);
+		}
 		else if (!line[0] && cub->map.grid && cub->map.grid[0])
 			return (error_ret("Elements or map is invalid.", EXIT_FAILURE));
-		return (read_grid(&cum->map, line));
+		return (read_grid(&cub->map, line));
 	}
 	return (EXIT_SUCCESS);
 }
@@ -45,13 +47,13 @@ int	read_map(int fd, t_cub *cub)
 		if (eof)
 		{
 			if (process_line(cub, line) == EXIT_FAILURE)
-				return (map_error(&cub->map, line, fd));
+				return (map_err(&cub->map, line, fd));
 			free(line);
 			break ;
 		}
 		if (process_line(cub, line) == EXIT_FAILURE)
-			return (map_error(&cub->map, line, fd));
+			return (map_err(&cub->map, line, fd));
 		free(line);
 	}
-	return (grid_validation(cub, fd));
+	return (grid_validate(cub, fd));
 }

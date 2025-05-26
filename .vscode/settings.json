@@ -4,6 +4,8 @@
 		"cub3d.h": "c",
 		"map.h": "c",
 		"utility.h": "c",
-		"libft.h": "c"
+		"libft.h": "c",
+		"cstdlib": "c",
+		"math.h": "c"
 	}
 }

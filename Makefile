@@ -6,7 +6,7 @@
 #    By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/18 22:10:11 by tripham           #+#    #+#              #
-#    Updated: 2025/05/22 22:57:20 by tripham          ###   ########.fr        #
+#    Updated: 2025/05/26 18:49:19 by tripham          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,10 @@ PRINTF_DIR	= $(LIB_DIR)/ft_printf_fd
 MLX42_DIR	= libs/MLX42
 
 PARSE_SRCS = $(PARSE_DIR)/map/map_validation.c 			\
+			 $(PARSE_DIR)/map/is_closed.c				\
+			 $(PARSE_DIR)/map/grid_validate.c			\
+			 $(PARSE_DIR)/map/png_validate.c			\
+			 $(PARSE_DIR)/map/read_grid.c				\
              $(PARSE_DIR)/map/map_utils.c				\
 			 $(PARSE_DIR)/map/read_ele.c				\
 			 $(PARSE_DIR)/map/read_map.c				\
@@ -36,7 +40,9 @@ PARSE_SRCS = $(PARSE_DIR)/map/map_validation.c 			\
 			 $(PARSE_DIR)/utils_parsing/ft_2d_len.c		\
 			 $(PARSE_DIR)/utils_parsing/ft_clean_2d.c	\
 			 $(PARSE_DIR)/utils_parsing/ft_readline.c	\
-			 $(PARSE_DIR)/utils_parsing/ft_get_color.c
+			 $(PARSE_DIR)/utils_parsing/ft_get_color.c	\
+			 $(PARSE_DIR)/utils_parsing/clean_cub3d.c	\
+			 $(PARSE_DIR)/utils_parsing/ft_free_utils.c
 
 MAIN_SRCS  = $(SRC_DIR)/main.c
 
@@ -73,22 +79,21 @@ $(NAME): $(OBJS)
 %.o: %.c
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
-${NAME}	:	${OBJS} ${LIBFT} ${PRINTF}
-		@printf "\033[1;32m💻Launching Cub3D-42VN-Pasila"
-		@for i in 1 2 3; do \
-			printf "\033[0;32m."; sleep 0.3; \
-		done; \
-		for i in 1 2 3; do \
-			printf "\b \b"; sleep 0.3; \
-		done; \
-		for i in 1 2 3; do \
-			printf "\033[0;32m."; sleep 0.3; \
-		done; \
-		for i in 1 2 3; do \
-			printf "\b \b"; sleep 0.3; \
-		done; \
-		printf "\033[0m\n"
-		@${CC} ${OBJS} ${LIBFT} ${PRINTF} ${FLAG} ${LFLAG} -o ${NAME}
+# ${NAME}	:	${OBJS} ${LIBFT} ${PRINTF}
+# 		@printf "\033[1;32m💻Launching Cub3D-42VN-Pasila"
+# 		@for i in 1 2 3; do \
+# 			printf "\033[0;32m."; sleep 0.3; \
+# 		done; \
+# 		for i in 1 2 3; do \
+# 			printf "\b \b"; sleep 0.3; \
+# 		done; \
+# 		for i in 1 2 3; do \
+# 			printf "\033[0;32m."; sleep 0.3; \
+# 		done; \
+# 		for i in 1 2 3; do \
+# 			printf "\b \b"; sleep 0.3; \
+# 		done; \
+# 		printf "\033[0m\n"
 	
 clean:
 	@$(MAKE) clean -C $(LIBFT_DIR)

@@ -6,14 +6,14 @@
 /*   By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 21:59:47 by tripham           #+#    #+#             */
-/*   Updated: 2025/05/24 16:24:17 by tripham          ###   ########.fr       */
+/*   Updated: 2025/05/26 19:39:01 by tripham          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 // Douple check new_grid[row][++col] = ' '; 
-static int	grip_copied(char **new_grid, t_map *map)
+static int	grid_copied(char **new_grid, t_map *map)
 {
 	int	row;
 	int	col;
@@ -44,7 +44,7 @@ static int	map_allocated(t_map *map)
 	if (map->max_rows >= map->size)
 	{
 		map->size += G_BUFFER;
-		new_grid = (char **)ft_calloc(map->size + 1, sizeof(char *))
+		new_grid = (char **)ft_calloc(map->size + 1, sizeof(char *));
 		if (!new_grid)
 			return (EXIT_FAILURE);
 		if (grid_copied(new_grid, map) == EXIT_FAILURE)
@@ -54,7 +54,7 @@ static int	map_allocated(t_map *map)
 		}
 		ft_clean_2d(&map->grid);
 	}
-	return (EXIT_SUCCESS)
+	return (EXIT_SUCCESS);
 }
 
 int	read_grid(t_map *map, char *line)
@@ -74,4 +74,3 @@ int	read_grid(t_map *map, char *line)
 	map->max_rows++;
 	return (EXIT_SUCCESS);
 }
-

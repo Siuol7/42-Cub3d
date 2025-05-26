@@ -6,7 +6,7 @@
 /*   By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:56:04 by caonguye          #+#    #+#             */
-/*   Updated: 2025/05/24 17:59:07 by tripham          ###   ########.fr       */
+/*   Updated: 2025/05/26 19:47:32 by tripham          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # define CELL_PX 32
 
 # include <stdio.h>
-//# include <float.h>
+// # include <float.h>
 # include <math.h>
 # include "libft.h"
 # include "ft_printf.h"
