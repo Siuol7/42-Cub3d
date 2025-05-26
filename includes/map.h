@@ -6,7 +6,7 @@
 /*   By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 21:37:22 by tripham           #+#    #+#             */
-/*   Updated: 2025/05/21 22:41:18 by tripham          ###   ########.fr       */
+/*   Updated: 2025/05/26 18:40:57 by tripham          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,10 @@ typedef struct s_map
 bool	dir_ele_done(t_map *map);
 int		read_map(int fd, t_cub *cub);
 int		read_ele(t_map *map, char *line);
+int		read_grid(t_map *map, char *line);
+
+// check valid png
+int		validate_png(char *path);
+bool	is_closed(t_map *map, t_dpoint start);
 
 #endif

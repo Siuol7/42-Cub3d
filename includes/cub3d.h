@@ -6,7 +6,7 @@
 /*   By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:56:04 by caonguye          #+#    #+#             */
-/*   Updated: 2025/05/21 23:50:30 by tripham          ###   ########.fr       */
+/*   Updated: 2025/05/26 19:47:32 by tripham          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 
 // # define WIDTH 1280
 // # define HEIGHT 960
-// # define PI 3.14159265359
+# define PI 3.14159265359
+# define CELL_PX 32
 
 # include <stdio.h>
-//# include <float.h>
+// # include <float.h>
 # include <math.h>
 # include "libft.h"
 # include "ft_printf.h"
@@ -27,6 +28,7 @@
 # include "ray_casting.h"
 # include "utility.h"
 # include "MLX42.h"
+# include "asset_manager.h"
 
 /* Complete application context
  void        *mlx;       // MLX42 context

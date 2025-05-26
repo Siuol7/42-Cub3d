@@ -6,7 +6,7 @@
 /*   By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 21:41:09 by tripham           #+#    #+#             */
-/*   Updated: 2025/05/21 23:44:30 by tripham          ###   ########.fr       */
+/*   Updated: 2025/05/26 19:40:27 by tripham          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@
 # include <string.h>
 # include "fcntl.h"
 # include "cub3d.h"
+# include "map.h"
 
+typedef struct s_map	t_map;
 typedef struct s_cub	t_cub;
 
 typedef struct s_point
@@ -61,12 +63,17 @@ char	*ft_readline(int fd, int *eof);
 int		ft_is_all_white_spaces(char *s);
 int		ft_2d_len(char **arr);
 void	ft_clean_2d(char ***arr);
-
+int		cnt_comma(char *str);
+int		get_color(char **rgb, int *c_or_f);
+void	clean_cub3d(t_cub *cub);
 // ERROR
 int		multi_err_ret(char *str1, char *str2, int num);
 char	*error_ret_null(char *str);
 int		multi_err_ret(char *str1, char *str2, int num);
 int		error_ret(char *str, int return_code);
 void	ft_error(char *str);
-
+void	clean_map(t_map *map);
+int		map_err(t_map *map, char *line, int fd);
+int		grid_validate(t_cub *cub, int fd);
+void	free_null(char **str);
 #endif
