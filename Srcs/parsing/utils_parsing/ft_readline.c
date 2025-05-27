@@ -6,7 +6,7 @@
 /*   By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 21:02:24 by tripham           #+#    #+#             */
-/*   Updated: 2025/05/21 21:08:50 by tripham          ###   ########.fr       */
+/*   Updated: 2025/05/27 20:36:33 by tripham          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int	process_read(char **line, int fd, int *eof, int size)
 	{
 		byte = read(fd, &c, 1);
 		if (byte == -1)
-			return (error_ret("Read", EXIT_FAILURE));
+			return (error_ret("Error: Read", EXIT_FAILURE));
 		if (byte == 0)
 			*eof = 1;
 		if (byte == 0 || c == '\n')
