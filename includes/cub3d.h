@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:56:04 by caonguye          #+#    #+#             */
-/*   Updated: 2025/05/26 19:58:39 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/05/27 10:39:34 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # include "ray_casting.h"
 # include "utility.h"
 # include "MLX42.h"
-# include "asset_manager.h"
+# include "assets.h"
 
 /* Complete application context
  void        *mlx;       // MLX42 context

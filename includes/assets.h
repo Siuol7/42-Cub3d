@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 10:53:08 by caonguye          #+#    #+#             */
-/*   Updated: 2025/05/26 19:55:16 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/05/26 20:01:38 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 # define M_OFFSET	    10
 # define M_PLAYER_SIZE	10
-# define SPRITE		"./assets/sprites/stab.png"
+# define SPRITE			"./assets/sprites/stab.png"
 # define M_SPACE		"./assets/textures/mini_space.png"
 # define M_WALL			"./assets/textures/mini_wall.png"
 # define M_PLAYER		"./assets/textures/mini_player.png"
