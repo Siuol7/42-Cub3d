@@ -6,7 +6,7 @@
 /*   By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:55:42 by caonguye          #+#    #+#             */
-/*   Updated: 2025/05/26 19:50:13 by tripham          ###   ########.fr       */
+/*   Updated: 2025/05/27 21:36:01 by tripham          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,7 @@ int	main(int ac, char **av)
 	if (fd < 0)
 		return (EXIT_FAILURE);
 	if (read_map(fd, &cub))
-	{
-		close(fd);
-		ft_printf_fd(2, "Error:\nFailed to read map!\n");
 		return (EXIT_FAILURE);
-	}
 	close(fd);
 	clean_cub3d(&cub);
 	return (EXIT_SUCCESS);

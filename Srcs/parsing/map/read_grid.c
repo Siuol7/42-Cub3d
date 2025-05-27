@@ -6,13 +6,12 @@
 /*   By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 21:59:47 by tripham           #+#    #+#             */
-/*   Updated: 2025/05/26 19:39:01 by tripham          ###   ########.fr       */
+/*   Updated: 2025/05/27 21:12:31 by tripham          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// Douple check new_grid[row][++col] = ' '; 
 static int	grid_copied(char **new_grid, t_map *map)
 {
 	int	row;
