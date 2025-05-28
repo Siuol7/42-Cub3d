@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 10:53:08 by caonguye          #+#    #+#             */
-/*   Updated: 2025/05/26 20:01:38 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/05/27 11:19:30 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ typedef struct s_cub	t_cub;
 typedef struct s_resized
 {
 	int			resized;
-	unint42_t	rsz_x;
-	unint32_t	rsz_y;
+	uint32_t	rsz_x;
+	uint32_t	rsz_y;
 }	t_resized;
 
 

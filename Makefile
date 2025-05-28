@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+         #
+#    By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/18 22:10:11 by tripham           #+#    #+#              #
-#    Updated: 2025/05/26 18:49:19 by tripham          ###   ########.fr        #
+#    Updated: 2025/05/27 11:48:55 by caonguye         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,24 +60,30 @@ MLX_LINK   = -Llibs/MLX42/build -lmlx42 -lglfw -ldl -pthread -lm
 all: mlx42 $(LIBFT) $(PRINTF) $(NAME)
 
 mlx42:
-	@if [ ! -d "$(MLX42_DIR)" ]; then \
-	  git clone https://github.com/codam-coding-college/MLX42.git $(MLX42_DIR); \
-	  mkdir -p $(MLX42_DIR)/build; \
-	  cd $(MLX42_DIR)/build && cmake .. && cmake --build . -j4; \
-	  rm -rf $(MLX42_DIR)/.git; \
+	@ if [ ! -d "$(MLX42_DIR)" ]; then \
+	    printf "Setting up MLX42…\n"; \
+	    git clone https://github.com/codam-coding-college/MLX42.git $(MLX42_DIR) > /dev/null 2>&1; \
+	    mkdir -p $(MLX42_DIR)/build; \
+	    ( \
+	      cd $(MLX42_DIR)/build && \
+	      cmake .. > /dev/null 2>&1 && \
+	      cmake --build . -j4 > /dev/null 2>&1 \
+	    ); \
+	    rm -rf $(MLX42_DIR)/.git; \
+	    printf "Done\n"; \
 	fi
 
 $(LIBFT):
-	@$(MAKE) -C $(LIBFT_DIR)
+	@$(MAKE)  -s -C $(LIBFT_DIR)
 
 $(PRINTF):
-	@$(MAKE) -C $(PRINTF_DIR)
+	@$(MAKE)  -s -C $(PRINTF_DIR)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LIBFT) $(PRINTF) $(MLX_LINK) -o $@
+	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LIBFT) $(PRINTF) $(MLX_LINK) -o $@
 
-%.o: %.c
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+%.o:%.c
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 # ${NAME}	:	${OBJS} ${LIBFT} ${PRINTF}
 # 		@printf "\033[1;32m💻Launching Cub3D-42VN-Pasila"
@@ -94,17 +100,17 @@ $(NAME): $(OBJS)
 # 			printf "\b \b"; sleep 0.3; \
 # 		done; \
 # 		printf "\033[0m\n"
-	
+
 clean:
-	@$(MAKE) clean -C $(LIBFT_DIR)
-	@$(MAKE) clean -C $(PRINTF_DIR)
-	rm -f $(OBJS)
+	@$(MAKE) clean -s -C $(LIBFT_DIR)
+	@$(MAKE) clean -s -C $(PRINTF_DIR)
+	@rm -f $(OBJS)
 
 fclean: clean
-	@$(MAKE) fclean -C $(LIBFT_DIR)
-	@$(MAKE) fclean -C $(PRINTF_DIR)
-	rm -f $(NAME)
-	rm -rf libs
+	@$(MAKE) fclean -s -C $(LIBFT_DIR)
+	@$(MAKE) fclean -s -C $(PRINTF_DIR)
+	@rm -f $(NAME)
+	@rm -rf libs
 
 re: fclean all
 
