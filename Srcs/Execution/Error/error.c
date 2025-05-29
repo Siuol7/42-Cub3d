@@ -1,33 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   assets_init.c                                      :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/26 00:02:45 by caonguye          #+#    #+#             */
-/*   Updated: 2025/05/29 11:19:48 by caonguye         ###   ########.fr       */
+/*   Created: 2025/05/30 00:19:36 by caonguye          #+#    #+#             */
+/*   Updated: 2025/05/30 00:20:36 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	assets_sprite(t_cub *c, t_assets *as)
+void	exec_clean()
 {
-
-}
-
-static void	assets_main(t_cub *c, t_assets *as)
-{
-	
-}
-
-void	assets_init(t_cub *c)
-{
-	t_assets	*assets;
-
-	assets = &c->assets;
-	assets_main(c, assets);
-	assets_mini(c, assets);
-	assets_sprite(c, assets);
+	rays_clean();
+	imgs_clean();
 }
