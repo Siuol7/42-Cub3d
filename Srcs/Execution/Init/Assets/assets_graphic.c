@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 01:12:01 by caonguye          #+#    #+#             */
-/*   Updated: 2025/05/27 11:16:02 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/05/28 09:25:48 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,7 @@ mlx_image_t*	assets_graphic(t_cub *c, t_resized status, const char *png_src)
 	if (status.resized)
 	{
 		if (!mlx_resize_image(image, status.rsz_x, status.rsz_y))
-		{
-			mlx_delete_image(image);
 			exec_error(mlx_strerror(mlx_errno), c);
-		}
 	}
 	return (image);
 }
