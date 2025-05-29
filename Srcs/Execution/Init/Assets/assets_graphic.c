@@ -6,18 +6,11 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 01:12:01 by caonguye          #+#    #+#             */
-/*   Updated: 2025/05/28 09:25:48 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/05/30 00:27:41 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void	assets_framing(t_cub *c, mlx_image_t **img,	uint32_t w,	uint32_t h)
-{
-	*img = mlx_new_image(c->mlx, width, height);
-	if (!*img)
-		exec_error("am_init: mlx_new_image", c);
-}
 
 mlx_image_t*	assets_graphic(t_cub *c, t_resized status, const char *png_src)
 {
