@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 00:02:45 by caonguye          #+#    #+#             */
-/*   Updated: 2025/05/30 12:54:09 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/05/30 21:03:42 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	assets_sprite(t_cub *c, t_assets *as)
 {
-
+	
 }
 
 static void	assets_main(t_cub *c, t_assets *as)
