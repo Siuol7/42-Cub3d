@@ -6,15 +6,15 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:56:04 by caonguye          #+#    #+#             */
-/*   Updated: 2025/05/27 10:39:34 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/05/30 01:15:16 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-// # define WIDTH 1280
-// # define HEIGHT 960
+# define WIDTH 1280
+# define HEIGHT 960
 # define PI 3.14159265359
 # define CELL_PX 32
 
