@@ -6,7 +6,7 @@
 #    By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/18 22:10:11 by tripham           #+#    #+#              #
-#    Updated: 2025/05/27 11:48:55 by caonguye         ###   ########.fr        #
+#    Updated: 2025/06/02 01:41:21 by caonguye         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ INCLUDES   = -I includes 								\
 
 # --- DIRECTORIES ---
 SRC_DIR		= Srcs
+MAIN		= Main
 PARSE_DIR	= Srcs/parsing
 LIB_DIR		= Library
 GNL_DIR		= $(LIB_DIR)/get_next_line
@@ -44,7 +45,7 @@ PARSE_SRCS = $(PARSE_DIR)/map/map_validation.c 			\
 			 $(PARSE_DIR)/utils_parsing/clean_cub3d.c	\
 			 $(PARSE_DIR)/utils_parsing/ft_free_utils.c
 
-MAIN_SRCS  = $(SRC_DIR)/main.c
+MAIN_SRCS  = $(MAIN)/main.c
 
 SRCS       = $(MAIN_SRCS) $(PARSE_SRCS) $(GNL_SRCS)
 OBJS       = $(SRCS:.c=.o)

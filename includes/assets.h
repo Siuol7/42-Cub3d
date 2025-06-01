@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 10:53:08 by caonguye          #+#    #+#             */
-/*   Updated: 2025/05/27 11:19:30 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/02 01:39:36 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,22 @@
 
 typedef struct s_cub	t_cub;
 
+typedef enum e_dir
+{
+	VERTICAL,
+	HORIZONTAL
+}	t_dir;
+
+typedef struct	s_sprite
+{
+	mlx_image_t**	frame;
+	uint32_t		sprite_w;
+	uint32_t		sprite_h;
+	int				frame_size;
+	double			elapsed_time;
+}	t_sprite;
+
+
 typedef struct s_resized
 {
 	int			resized;
@@ -35,9 +51,9 @@ typedef struct s_resized
 	uint32_t	rsz_y;
 }	t_resized;
 
-
 typedef struct s_assets
 {
+	t_sprite	*sprite;
 	mlx_image_t	*player;
 	mlx_image_t	*wall;
 	mlx_image_t	*ceiling;
@@ -50,6 +66,5 @@ typedef struct s_assets
 	mlx_image_t	*m_map;
 	mlx_image_t	*m_txtr;
 }	t_assets;
-
 
 #endif
