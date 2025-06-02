@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray_init.c                                         :+:      :+:    :+:   */
+/*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/23 19:45:25 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/02 20:52:22 by caonguye         ###   ########.fr       */
+/*   Created: 2025/06/02 23:30:06 by caonguye          #+#    #+#             */
+/*   Updated: 2025/06/02 23:34:26 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef ERROR_H
+
+ #define ERROR_H
+
 #include "cub3d.h"
 
-void	ray_init(t_cub *c)
-{
-	int i;
+typedef struct s_cub	t_cub;
+typedef struct s_assets	t_assets;
 
-	i = 0;
-	c->rays =  (t_ray**)ft_calloc(WIDTH, sizeof(t_ray*));
-	if (!c->rays)
-		cub3d_ends(c, "Ray : allocating failed");
-	while (i < WIDTH)
-	{
-		c->rays[i] = (t_ray*)ft_calloc(1, sizeof(t_ray));
-		if (!c->rays[i])
-			cub3d_ends(c, "Ray : allocating failed");
-		i++;
-	}
-}
+void	exec_clean(t_cub* c);
+void 	clean_assets(t_cub *c, t_assets *as);
+
+#endif
