@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 20:08:50 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/02 17:36:10 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/03 02:02:21 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	assets_sprite_framing(t_cub *c, t_assets *as)
 		as->sprite->frame[i] = mlx_new_image(c->mlx,
 			as->sprite->sprite_w, as->sprite->sprite_h);
 		if (!as->sprite->frame[i])
-			cub3d_ends(c, "Assets init: mlx_new_image");
+			cub3d_ends(c, "Assets init: mlx_new_image", 0);
 		assets_copy_paste(c, as, i);
 		i++;
 	}
@@ -67,19 +67,19 @@ t_sprite	*assets_sprite_frame(t_cub *c,int size,	t_resized status,
 	t_sprite	*sprite;
 
 	if (!c || !c->mlx || !png_src)
-		cub3d_ends(c, "Sprite load: Invalid parameter(s)\n");
+		cub3d_ends(c, "Sprite load: Invalid parameter(s)", 0);
 	img = assets_graphic(c, status, png_src);
 	if (!img)
-		cub3d_ends("Sprite load: Loading graphic failed\n");
+		cub3d_ends(c, "Sprite load: Loading graphic failed", 0);
 	sprite = (t_sprite *)ft_calloc(1, sizeof(t_sprite));
 	if (!sprite)
-		cub3d_ends(c, "Sprite framing failed\n");
+		cub3d_ends(c, "Sprite framing failed", 0);
 	sprite->sprite_sheet = img;
 	sprite->sprite_w = img->width / size;
 	sprite->sprite_h = img->height;
 	sprite->frame_cnt = size;
 	sprite->frame = (mlx_image_t **)ft_calloc(size, sizeof(mlx_image_t*));
 	if (!sprite->frame)
-		cub3d_ends(c, "Sprite frame: Allocating failed\n");
+		cub3d_ends(c, "Sprite frame: Allocating failed", 0);
 	return (sprite);
 }

@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 00:19:36 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/02 19:59:30 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/03 01:58:12 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	exec_clean(t_cub* c)
 {
-	clean_assets(c, c->assets);
+	clean_assets(c, &c->assets);
 }

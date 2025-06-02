@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray_init.c                                         :+:      :+:    :+:   */
+/*   end.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/23 19:45:25 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/03 02:01:19 by caonguye         ###   ########.fr       */
+/*   Created: 2025/05/30 02:32:41 by caonguye          #+#    #+#             */
+/*   Updated: 2025/06/03 02:00:55 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	ray_init(t_cub *c)
+void	cub3d_ends(t_cub* c, char *str, int exitcode)
 {
-	int i;
-
-	i = 0;
-	c->rays =  (t_ray**)ft_calloc(WIDTH, sizeof(t_ray*));
-	if (!c->rays)
-		cub3d_ends(c, "Ray : allocating failed", 0);
-	while (i < WIDTH)
-	{
-		c->rays[i] = (t_ray*)ft_calloc(1, sizeof(t_ray));
-		if (!c->rays[i])
-			cub3d_ends(c, "Ray : allocating failed", 0);
-		i++;
-	}
+	clean_assets(c, &c->assets);
+	if (exitcode)
+		ft_printf_fd(2, "%s\n", str);
 }
