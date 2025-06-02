@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 10:53:08 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/02 01:39:36 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/02 15:02:12 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,10 @@ typedef enum e_dir
 typedef struct	s_sprite
 {
 	mlx_image_t**	frame;
+	mlx_image_t*	sprite_sheet;
 	uint32_t		sprite_w;
 	uint32_t		sprite_h;
-	int				frame_size;
+	int				frame_cnt;
 	double			elapsed_time;
 }	t_sprite;
 
