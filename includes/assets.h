@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 10:53:08 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/02 23:29:35 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/02 23:42:26 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ typedef struct s_assets
 	mlx_image_t	*m_map_bg;
 }	t_assets;
 
+
+void			ray_init(t_cub *c);
 void			assets_init(t_cub *c);
 void			assets_framing(t_cub *c, t_assets *as);
 void			assets_frame(t_cub *c, mlx_image_t **img, uint32_t w,	uint32_t h);

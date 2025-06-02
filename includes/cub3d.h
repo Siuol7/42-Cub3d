@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:56:04 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/02 20:44:20 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/03 01:36:53 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 # include "utility.h"
 # include "MLX42.h"
 # include "assets.h"
+# include "error.h"
+# include "handler.h"
 
 /* Complete application context
  void        *mlx;       // MLX42 context
@@ -47,6 +49,8 @@ typedef struct s_cub
 	t_ray		**rays;
 	t_assets	assets;
 }	t_cub;
+
+void	system_init(t_cub *c);
 
 #endif
 // # define FOV 1.04719755120
