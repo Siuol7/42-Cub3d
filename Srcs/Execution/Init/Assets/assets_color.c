@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 12:10:29 by caonguye          #+#    #+#             */
-/*   Updated: 2025/05/30 20:57:31 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/02 17:43:38 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,10 @@ static void	assets_default_color(mlx_image_t *img, t_color color)
 
 void	assets_coloring(t_cub *c, t_assets *as)
 {
-	assets_color(am->ceiling, c->map.c_color);
-	assets_color(am->floor, c->map.f_color);
-	assets_default_color(am->m_wall, (t_color){180, 180, 180, 255});
-	assets_default_color(am->m_player, (t_color){245 , 0, 0, 255});
-	assets_default_color(am->m_space, (t_color){40, 40, 40, 255});
-	assets_default_color(am->m_map_bg, (t_color){45, 52, 54, 255});
+	assets_color(as->ceiling, c->map.c_color);
+	assets_color(as->floor, c->map.f_color);
+	assets_default_color(as->m_wall, (t_color){180, 180, 180, 255});
+	assets_default_color(as->m_player, (t_color){245 , 0, 0, 255});
+	assets_default_color(as->m_space, (t_color){40, 40, 40, 255});
+	assets_default_color(as->m_map_bg, (t_color){45, 52, 54, 255});
 }

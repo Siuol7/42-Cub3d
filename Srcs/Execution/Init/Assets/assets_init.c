@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 00:02:45 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/02 01:18:23 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/02 18:30:48 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,19 @@ static void	assets_sprite(t_cub *c, t_assets *as)
 	assets_sprite_framing(c, as);
 }
 
-static void	assets_main(t_cub *c, t_assets *as)
+static void	assets_wall(t_cub* c, t_assets* as)
+{
+	as->wall[NO] = assets_graphic(c,
+			(t_resized){0, CELL_PX, CELL_PX}, c->map.no);
+	as->wall[SO] = assets_graphic(c,
+			(t_resized){0, CELL_PX, CELL_PX}, c->map.so);
+	as->wall[EA] = assets_graphic(c,
+			(t_resized){0, CELL_PX, CELL_PX}, c->map.ea);
+	as->wall[WE] = assets_graphic(c,
+			(t_resized){0, CELL_PX, CELL_PX}, c->map.we);
+}
+
+static void	assets_main(t_cub* c, t_assets *as)
 {
 	assets_framing(c, as);
 	assets_coloring(c, as);
@@ -31,5 +43,6 @@ void	assets_init(t_cub *c)
 
 	assets = &c->assets;
 	assets_main(c, assets);
+	assets_wall(c, assets);
 	assets_sprite(c, assets);
 }
