@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 10:53:08 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/02 23:42:26 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/03 15:54:35 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@
 # define M_PLAYER		"./assets/textures/mini_player.png"
 # define M_WIDTH 		200
 # define M_HEIGHT 		200
+# define SPRITE_TIME	0.4
+# define FRAMES			5
+# define FRAME_INTERVAL	(SPRITE_TIME / FRAMES)
 
 # include "utility.h"
 # include "MLX42.h"
@@ -40,6 +43,7 @@ typedef struct	s_sprite
 	mlx_image_t*	sprite_sheet;
 	uint32_t		sprite_w;
 	uint32_t		sprite_h;
+	uint32_t		frame_id;
 	int				frame_cnt;
 	double			elapsed_time;
 }	t_sprite;

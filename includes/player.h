@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 21:38:48 by tripham           #+#    #+#             */
-/*   Updated: 2025/05/26 19:39:43 by tripham          ###   ########.fr       */
+/*   Updated: 2025/06/03 16:22:29 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ typedef struct s_player
 	t_dpoint	cur_pos;
 	t_dpoint	prev_pos;
 	double		angle;
-	double		speed;
 	int			attack;
 }	t_player;
 
