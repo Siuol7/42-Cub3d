@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handler.h                                          :+:      :+:    :+:   */
+/*   handler_move.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/03 01:35:22 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/03 03:17:34 by caonguye         ###   ########.fr       */
+/*   Created: 2025/06/03 03:10:33 by caonguye          #+#    #+#             */
+/*   Updated: 2025/06/03 03:17:27 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HANDLER_H
-
- #define HANDLER_H
-
 #include "cub3d.h"
 
-typedef struct s_cub	t_cub;
-typedef struct s_assets t_assets;
+double	move_angle(double angle)
+{
 
-void		handler_loop(void* data);
-void		handler_close(void* data);
-double		move_angle(double angle);
-t_dpoint	move_dir(t_dpoint cur, double angle, keys_t key);
+}
 
+t_dpoint	move_dir(t_dpoint cur, double angle, keys_t key)
+{
 
-#endif
+}
