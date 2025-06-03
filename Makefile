@@ -6,7 +6,7 @@
 #    By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/18 22:10:11 by tripham           #+#    #+#              #
-#    Updated: 2025/06/02 01:41:21 by caonguye         ###   ########.fr        #
+#    Updated: 2025/06/03 18:10:01 by caonguye         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,6 @@ PARSE_SRCS = $(PARSE_DIR)/map/map_validation.c 			\
 			 $(PARSE_DIR)/utils_parsing/ft_clean_2d.c	\
 			 $(PARSE_DIR)/utils_parsing/ft_readline.c	\
 			 $(PARSE_DIR)/utils_parsing/ft_get_color.c	\
-			 $(PARSE_DIR)/utils_parsing/clean_cub3d.c	\
 			 $(PARSE_DIR)/utils_parsing/ft_free_utils.c
 
 MAIN_SRCS  = $(MAIN)/main.c
