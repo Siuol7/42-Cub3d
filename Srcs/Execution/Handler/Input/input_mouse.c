@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 01:54:13 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/03 16:28:42 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/03 16:29:25 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	input_mousehold(t_cub *c, double cur, double *last_atk, double cd)
 	if (cur - *last_atk >= cd)
 	{
 		c->player.attack = 1;
-		animate_player(c, c->assets.sprite, c->mlx->delta_time);
+		render_sprite(c, c->assets.sprite, c->mlx->delta_time);
 		*last_atk = cur;
 	}
 }
@@ -48,7 +48,7 @@ static void	input_mouseclick(t_cub *c)
 	if (cur_status && !prev_status)
 	{
 		c->player.attack = 1;
-		animate_player(c, c->assets.sprite, c->mlx->delta_time);
+		render_sprite(c, c->assets.sprite, c->mlx->delta_time);
 		last_atk = cur;
 	}
 	else if (cur_status && prev_status)
