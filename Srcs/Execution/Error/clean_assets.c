@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 17:39:34 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/02 19:50:31 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/03 18:09:04 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ static void clean_draw(t_cub *c, t_assets *as)
 
 void clean_assets(t_cub *c, t_assets *as)
 {
+	if (!c || !as)
+		return ;
 	clean_draw(c, as);
 	clean_png(c, as);
 	clean_sprite(c, as);

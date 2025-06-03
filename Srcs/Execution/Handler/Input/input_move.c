@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handler_move.c                                     :+:      :+:    :+:   */
+/*   input_move.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 03:10:33 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/03 11:39:30 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/03 17:16:03 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-double	move_angle(double angle)
+double	move_angle_rescale(double angle)
 {
-
+	if (angle < 0)
+		return (angle + 2 * PI);
+	else if (angle >= 2 * PI)
+		return (angle - 2 * PI);
+	else
+		return (angle);
 }
 
 t_dpoint	move_dir(t_dpoint cur, double angle, keys_t key)
