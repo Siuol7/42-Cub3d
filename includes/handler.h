@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 01:35:22 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/03 19:20:03 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/04 20:20:18 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,14 @@ int			position_validate(t_cub *c, int x, int32_t y);
 void		position(t_cub *c);
 void		position_back_y(t_player *player, int32_t y);
 void		position_back_x(t_player *player, int x);
+
+//RAY CASTING
+
+void		handler_raycasting(t_cub *c);
+void		rc_hit_point(t_ray *ray, t_cub *cub);
+void		rc_process(t_ray *ray, t_cub *cub);
+
+//RENDER
+
 
 #endif
