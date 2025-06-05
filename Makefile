@@ -6,7 +6,7 @@
 #    By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/18 22:10:11 by tripham           #+#    #+#              #
-#    Updated: 2025/06/03 18:10:01 by caonguye         ###   ########.fr        #
+#    Updated: 2025/06/05 11:13:13 by caonguye         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,29 +22,59 @@ INCLUDES   = -I includes 								\
 SRC_DIR		= Srcs
 MAIN		= Main
 PARSE_DIR	= Srcs/parsing
+EXEC_DIR	= Srcs/Execution
+INIT_DIR	= $(INIT_DIR)
+HANDLER_DIR = $(EXEC_DIR)/Handler
 LIB_DIR		= Library
 GNL_DIR		= $(LIB_DIR)/get_next_line
 LIBFT_DIR	= $(LIB_DIR)/libft
 PRINTF_DIR	= $(LIB_DIR)/ft_printf_fd
 MLX42_DIR	= libs/MLX42
 
-PARSE_SRCS = $(PARSE_DIR)/map/map_validation.c 			\
-			 $(PARSE_DIR)/map/is_closed.c				\
-			 $(PARSE_DIR)/map/grid_validate.c			\
-			 $(PARSE_DIR)/map/png_validate.c			\
-			 $(PARSE_DIR)/map/read_grid.c				\
-             $(PARSE_DIR)/map/map_utils.c				\
-			 $(PARSE_DIR)/map/read_ele.c				\
-			 $(PARSE_DIR)/map/read_map.c				\
-			 $(PARSE_DIR)/utils_parsing/ft_error.c		\
-			 $(PARSE_DIR)/utils_parsing/ft_space.c		\
-			 $(PARSE_DIR)/utils_parsing/ft_2d_len.c		\
-			 $(PARSE_DIR)/utils_parsing/ft_clean_2d.c	\
-			 $(PARSE_DIR)/utils_parsing/ft_readline.c	\
-			 $(PARSE_DIR)/utils_parsing/ft_get_color.c	\
-			 $(PARSE_DIR)/utils_parsing/ft_free_utils.c
+PARSE_SRCS 	= $(PARSE_DIR)/map/map_validation.c 				\
+			  $(PARSE_DIR)/map/is_closed.c						\
+			  $(PARSE_DIR)/map/grid_validate.c					\
+			  $(PARSE_DIR)/map/png_validate.c					\
+			  $(PARSE_DIR)/map/read_grid.c						\
+              $(PARSE_DIR)/map/map_utils.c						\
+			  $(PARSE_DIR)/map/read_ele.c						\
+			  $(PARSE_DIR)/map/read_map.c						\
+			  $(PARSE_DIR)/utils_parsing/ft_error.c				\
+			  $(PARSE_DIR)/utils_parsing/ft_space.c				\
+			  $(PARSE_DIR)/utils_parsing/ft_2d_len.c			\
+			  $(PARSE_DIR)/utils_parsing/ft_clean_2d.c			\
+			  $(PARSE_DIR)/utils_parsing/ft_readline.c			\
+			  $(PARSE_DIR)/utils_parsing/ft_get_color.c			\
+			  $(PARSE_DIR)/utils_parsing/ft_free_utils.c
 
-MAIN_SRCS  = $(MAIN)/main.c
+EXEC_SRCS	= $(INIT_DIR)/system_init.c							\
+			  $(INIT_DIR)/Assets/assets_color.c					\
+			  $(INIT_DIR)/Assets/assets_graphic.c				\
+			  $(INIT_DIR)/Assets/assets_init.c					\
+			  $(INIT_DIR)/Assets/assets_sprite.c				\
+			  $(INIT_DIR)/Assets/assets_utility.c				\
+			  $(INIT_DIR)/Ray/ray_init.c						\
+			  $(HANDLER_DIR)/Input/handler_input.c				\
+			  $(HANDLER_DIR)/Input/input_keyboard.c				\
+			  $(HANDLER_DIR)/Input/input_mouse.c				\
+			  $(HANDLER_DIR)/Input/input_move.c					\
+			  $(HANDLER_DIR)/Position/handler_position.c		\
+			  $(HANDLER_DIR)/Position/position_back.c			\
+			  $(HANDLER_DIR)/Position/position_validate.c		\
+			  $(HANDLER_DIR)/Ray_casting/handler_raycasting.c	\
+			  $(HANDLER_DIR)/Ray_casting/rc_hit_point.c			\
+			  $(HANDLER_DIR)/Ray_casting/rc_process.c			\
+			  $(HANDLER_DIR)/Render/handler_render.c			\
+			  $(HANDLER_DIR)/Render/render_minimap.c			\
+			  $(HANDLER_DIR)/Render/render_miniplayer.c			\
+			  $(HANDLER_DIR)/Render/render_player.c				\
+			  $(HANDLER_DIR)/Render/render_scene.c				\
+			  $(HANDLER_DIR)/Render/render_utility.c			\
+			  $(HANDLER_DIR)/handler_loop.c						\
+			  $(HANDLER_DIR)/handler_close.c
+
+MAIN_SRCS 	= $(MAIN)/main.c									\
+			  $(MAIN)/end.c
 
 SRCS       = $(MAIN_SRCS) $(PARSE_SRCS) $(GNL_SRCS)
 OBJS       = $(SRCS:.c=.o)

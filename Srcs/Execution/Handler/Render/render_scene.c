@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 21:41:03 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/05 10:54:00 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/05 10:56:40 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,36 +32,30 @@ static void	clear_image(mlx_image_t *image)
 	}
 }
 
-static void	copy_pixel(
-	t_cub *c,
-	int32_t x,
-	int32_t y_pixel,
-	int32_t image_pos_y
-)
+static void	ft_pxcpy(t_cub *c, int32_t x, int32_t y_pixel, int32_t image_pos_y)
 {
 	uint32_t	*dest_pixels;
 	uint32_t	*src_pixels;
 
 	if ((uint8_t)image_pos_y < c->rays[x]->image->height - 1)
 	{
-		dest_pixels = (uint32_t *)ft_get_pixels(c->am.scene, x, y_pixel);
-		src_pixels = (uint32_t *)ft_get_pixels(c->rays[x]->image,
+		dest_pixels = (uint32_t *)render_px_get(c->am.scene, x, y_pixel);
+		src_pixels = (uint32_t *)render_px_get(c->rays[x]->image,
 				c->rays[x]->im_position,
 				image_pos_y);
 		*(uint32_t *)dest_pixels = *(uint32_t *)src_pixels;
 	}
 	else
 	{
-		dest_pixels = (uint32_t *)ft_get_pixels(c->am.scene, x, y_pixel);
-		src_pixels = (uint32_t *)ft_get_pixels(c->rays[x]->image,
+		dest_pixels = (uint32_t *)render_px_get(c->am.scene, x, y_pixel);
+		src_pixels = (uint32_t *)render_px_get(c->rays[x]->image,
 				c->rays[x]->im_position,
 				c->rays[x]->image->height - 1);
 		*(uint32_t *)dest_pixels = *(uint32_t *)src_pixels;
 	}
 }
 
-static void	draw_texture(t_cub *c, int i, double wall_h,
-				double scale)
+static void	render_texture(t_cub *c, int i, double wall_h, double scale)
 {
 	double		texture_y;
 	int32_t		image_pos_y;
@@ -81,7 +75,7 @@ static void	draw_texture(t_cub *c, int i, double wall_h,
 	{
 		image_pos_y = (int)texture_y;
 		texture_y += scale;
-		copy_pixel(c, i, start_y, image_pos_y);
+		ft_pxcpy(c, i, start_y, image_pos_y);
 		start_y++;
 		wall_h--;
 	}
@@ -101,7 +95,7 @@ void	render_scene(t_cub *c)
 	{
 		wall_h = (CELL_PX / c->rays[i]->distance) * dist_planecam;
 		scale = (double)c->rays[i]->image->height / wall_h;
-		draw_texture(c, i, wall_h, scale);
+		render_texture(c, i, wall_h, scale);
 		i++;
 	}
 }
