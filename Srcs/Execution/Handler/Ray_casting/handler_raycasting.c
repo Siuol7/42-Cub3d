@@ -6,11 +6,11 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 17:04:39 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/04 17:32:20 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/05 23:14:44 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "c3d.h"
+#include "cub3d.h"
 
 static double	rc_angle(double angle, double i)
 {
@@ -25,10 +25,10 @@ static void	rc_ray_init(t_ray *ray, t_player player, int i)
 	offset = M_PLAYER_SIZE / 2;
 	ray->angle = rc_angle(player.angle, (double)i);
 	ray->dir = (t_dpoint){cos(ray->angle), sin(ray->angle)};
-	ray->start = (t_dpoint){player.current.x + offset,
-				player.current.y + offset};
+	ray->start = (t_dpoint){player.cur_pos.x + offset,
+				player.cur_pos.y + offset};
 	ray->end = (t_dpoint){ray->start.x, ray->start.y};
-	ray->hit = (t_point){ray->start.y / CELL_PX, ray->start.x / CELL_PX};
+	ray->hit_cell = (t_point){ray->start.y / CELL_PX, ray->start.x / CELL_PX};
 }
 
 void	handler_raycasting(t_cub *c)

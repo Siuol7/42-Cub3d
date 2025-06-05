@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:56:04 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/03 01:59:51 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/05 23:14:56 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # define CELL_PX 32
 
 # include <stdio.h>
-// # include <float.h>
+# include <float.h>
 # include <math.h>
 # include "libft.h"
 # include "ft_printf.h"
@@ -52,6 +52,7 @@ typedef struct s_cub
 
 void	system_init(t_cub *c);
 void	cub3d_ends(t_cub* c, char *str, int exitcode);
+void 	clean_assets(t_cub *c, t_assets *as);
 
 #endif
 // # define FOV 1.04719755120

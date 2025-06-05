@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 20:08:50 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/03 02:02:21 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/05 22:48:10 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	assets_pixelcpy(mlx_image_t *src, mlx_image_t *dst,
 	uint8_t		*dst_pixel;
 	uint32_t	w;
 	uint32_t	h;
-	int			y;
+	uint32_t	y;
 
 
 	y = 0;
@@ -39,6 +39,7 @@ void	assets_copy_paste(t_cub *c, t_assets* as, int i)
 	mlx_image_t*	src;
 	mlx_image_t*	dst;
 
+	(void)c;
 	src = as->sprite->sprite_sheet;
 	dst = as->sprite->frame[i];
 	assets_pixelcpy(src, dst, as, i);

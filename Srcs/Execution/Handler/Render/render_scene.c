@@ -6,11 +6,11 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 21:41:03 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/05 10:56:40 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/05 23:26:37 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "c3d.h"
+#include "cub3d.h"
 
 static void	clear_image(mlx_image_t *image)
 {
@@ -41,7 +41,7 @@ static void	ft_pxcpy(t_cub *c, int32_t x, int32_t y_pixel, int32_t image_pos_y)
 	{
 		dest_pixels = (uint32_t *)render_px_get(c->am.scene, x, y_pixel);
 		src_pixels = (uint32_t *)render_px_get(c->rays[x]->image,
-				c->rays[x]->im_position,
+				c->rays[x]->im_pos,
 				image_pos_y);
 		*(uint32_t *)dest_pixels = *(uint32_t *)src_pixels;
 	}
@@ -49,7 +49,7 @@ static void	ft_pxcpy(t_cub *c, int32_t x, int32_t y_pixel, int32_t image_pos_y)
 	{
 		dest_pixels = (uint32_t *)render_px_get(c->am.scene, x, y_pixel);
 		src_pixels = (uint32_t *)render_px_get(c->rays[x]->image,
-				c->rays[x]->im_position,
+				c->rays[x]->im_pos,
 				c->rays[x]->image->height - 1);
 		*(uint32_t *)dest_pixels = *(uint32_t *)src_pixels;
 	}

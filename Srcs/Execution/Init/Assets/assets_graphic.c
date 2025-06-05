@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 01:12:01 by caonguye          #+#    #+#             */
-/*   Updated: 2025/05/30 00:27:41 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/05 22:45:20 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,18 @@ mlx_image_t*	assets_graphic(t_cub *c, t_resized status, const char *png_src)
 	mlx_image_t		*image;
 
 	if (!c->mlx)
-		exec_error(mlx_strerror(mlx_errno), c);
+		cub3d_ends(c, "MLX creating failed", 1);
 	texture = mlx_load_png(png_src);
 	if (!texture)
-		exec_error(mlx_strerror(mlx_errno), c);
+		cub3d_ends(c, "Loading PNG failed", 1);
 	image = mlx_texture_to_image(c->mlx, texture);
 	mlx_delete_texture(texture);
 	if (!image)
-		exec_error(mlx_strerror(mlx_errno), c);
+		cub3d_ends(c, "Loading texture to image failed", 1);
 	if (status.resized)
 	{
 		if (!mlx_resize_image(image, status.rsz_x, status.rsz_y))
-			exec_error(mlx_strerror(mlx_errno), c);
+			cub3d_ends(c, "Resizing failed", 1);
 	}
 	return (image);
 }

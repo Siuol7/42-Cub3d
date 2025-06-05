@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 01:54:13 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/03 16:29:25 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/05 22:51:07 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ static void	input_mousemove(t_cub *c)
 	last_angle = c->mouse_x;
 	mlx_get_mouse_pos(c->mlx, &c->mouse_x, &c->mouse_y);
 	if (last_angle < c->mouse_x)
-		c->player.angle = move_angle(c->player.angle - PI / 36);
+		c->player.angle = move_angle_rescale(c->player.angle - PI / 36);
 	if (last_angle > c->mouse_x)
-		c->player.angle = move_angle(c->player.angle + PI / 36);
+		c->player.angle = move_angle_rescale(c->player.angle + PI / 36);
 }
 
 static void	input_mousehold(t_cub *c, double cur, double *last_atk, double cd)

@@ -6,7 +6,7 @@
 #    By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/18 22:10:11 by tripham           #+#    #+#              #
-#    Updated: 2025/06/05 11:13:13 by caonguye         ###   ########.fr        #
+#    Updated: 2025/06/05 23:05:30 by caonguye         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,9 @@ SRC_DIR		= Srcs
 MAIN		= Main
 PARSE_DIR	= Srcs/parsing
 EXEC_DIR	= Srcs/Execution
-INIT_DIR	= $(INIT_DIR)
+INIT_DIR	= $(EXEC_DIR)/Init
 HANDLER_DIR = $(EXEC_DIR)/Handler
+ERROR_DIR	= $(EXEC_DIR)/Error
 LIB_DIR		= Library
 GNL_DIR		= $(LIB_DIR)/get_next_line
 LIBFT_DIR	= $(LIB_DIR)/libft
@@ -70,13 +71,16 @@ EXEC_SRCS	= $(INIT_DIR)/system_init.c							\
 			  $(HANDLER_DIR)/Render/render_player.c				\
 			  $(HANDLER_DIR)/Render/render_scene.c				\
 			  $(HANDLER_DIR)/Render/render_utility.c			\
+			  $(HANDLER_DIR)/Render/render_sprite.c				\
 			  $(HANDLER_DIR)/handler_loop.c						\
-			  $(HANDLER_DIR)/handler_close.c
+			  $(HANDLER_DIR)/handler_close.c					\
+			  $(ERROR_DIR)/clean_assets.c						\
+			  $(ERROR_DIR)/error.c
 
 MAIN_SRCS 	= $(MAIN)/main.c									\
-			  $(MAIN)/end.c
+			  $(MAIN)/end.c										\
 
-SRCS       = $(MAIN_SRCS) $(PARSE_SRCS) $(GNL_SRCS)
+SRCS       = $(MAIN_SRCS) $(PARSE_SRCS) $(EXEC_SRCS) $(GNL_SRCS)
 OBJS       = $(SRCS:.c=.o)
 
 # --- LIBRARIES ---

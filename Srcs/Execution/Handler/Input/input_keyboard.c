@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 01:53:55 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/03 11:11:35 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/05 22:50:39 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	input_keyboard(t_cub* c)
 	cur_pos = c->player.cur_pos;
 	c->player.prev_pos = c->player.cur_pos;
 	if (mlx_is_key_down(c->mlx, MLX_KEY_ESCAPE))
-		cub3d_exit(c, EXIT_SUCCESS);
+		cub3d_ends(c, "Done", EXIT_SUCCESS);
 	if (mlx_is_key_down(c->mlx, MLX_KEY_W))
 		c->player.cur_pos = move_dir(cur_pos, c->player.angle, MLX_KEY_W);
 	if (mlx_is_key_down(c->mlx, MLX_KEY_A))
@@ -29,7 +29,7 @@ void	input_keyboard(t_cub* c)
 	if (mlx_is_key_down(c->mlx, MLX_KEY_D))
 		c->player.cur_pos = move_dir(cur_pos, c->player.angle, MLX_KEY_D);
 	if (mlx_is_key_down(c->mlx, MLX_KEY_LEFT))
-		c->player.angle = move_angle(c->player.angle + PI / 36);
+		c->player.angle = move_angle_rescale(c->player.angle + PI / 36);
 	if (mlx_is_key_down(c->mlx, MLX_KEY_RIGHT))
-		c->player.angle = move_angle(c->player.angle - PI / 36);
+		c->player.angle = move_angle_rescale(c->player.angle - PI / 36);
 }

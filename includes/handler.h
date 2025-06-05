@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 01:35:22 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/05 10:59:54 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/05 23:04:49 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void		rc_hit_point(t_ray *ray, t_cub *cub);
 void		rc_process(t_ray *ray, t_cub *cub);
 
 //RENDER
-void		render_miniplayer(t_cub *c, t_asset_manager *as);
+void		render_miniplayer(t_cub *c, t_assets *as);
 uint8_t		*render_px_get(mlx_image_t *img, int32_t x, int32_t y);
 int			render_px_cpy(mlx_image_t *dst,	mlx_image_t *src, int32_t copy_till_x,
 									int32_t copy_till_y);
@@ -53,5 +53,6 @@ void		render_px_del(uint8_t *start_px, uint32_t img_width, int32_t offset_x,
 void		render_minimap(t_cub *c);
 void		render_player(t_cub *c);
 void		render_scene(t_cub *c);
+void		render_sprite(t_cub *c, t_sprite *sprite, double elapsed_time);
 
 #endif

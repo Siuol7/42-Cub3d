@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 21:39:54 by tripham           #+#    #+#             */
-/*   Updated: 2025/06/04 18:02:55 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/05 23:27:55 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 typedef struct s_cub	t_cub;
 
 /*
-*	HORIZONTAL,
-*	VERTICAL
+*	HOR,
+*	VER
 * -> Result of 1 ray in ray-casting
 */
 typedef enum s_hit_dir
@@ -40,7 +40,7 @@ typedef struct s_distance
     t_dpoint    hit_pos;    // actual collision point
     t_point     hit_cell;   // grid cell where the collision occurred
     double      distance;   // distance (fish-eye correction applied)
-    t_hit_dir   hit_dir;    // direction of collision (horizontal or vertical)
+    t_hit_dir   hit_dir;    // direction of collision (HOR or VER)
     int         tex_id;     // texture ID (0–3 corresponding to NO, SO, WE, EA)
     int         tex_x;      // pixel offset within the texture
 */

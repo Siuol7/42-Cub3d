@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 17:35:40 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/04 19:54:41 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/05 23:27:43 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	rc_ver_point(t_ray *ray)
 	double	delta_x;
 	double	delta_y;
 
-	ray->end.x = ray->hit.col * CELL_PX;
+	ray->end.x = ray->hit_cell.col * CELL_PX;
 	if (ray->end.x < ray->start.x)
 		ray->end.x += CELL_PX;
 	delta_x = ray->end.x - ray->start.x;
@@ -31,10 +31,10 @@ static void	rc_ver_point(t_ray *ray)
 static void	rc_ver_img(t_ray *ray, t_cub *cub)
 {
 	if (ray->end.x > ray->start.x)
-		ray->image = cub->am.walls[WE];
+		ray->image = cub->assets.wall[WE];
 	else
-		ray->image = cub->am.walls[EA];
-	ray->im_position = fmod(ray->end.y, CELL_PX) * ray->image->width / CELL_PX;
+		ray->image = cub->assets.wall[EA];
+	ray->im_pos = fmod(ray->end.y, CELL_PX) * ray->image->width / CELL_PX;
 }
 
 static void	rc_hor_point(t_ray *ray)
@@ -42,7 +42,7 @@ static void	rc_hor_point(t_ray *ray)
 	double	delta_x;
 	double	delta_y;
 
-	ray->end.y = ray->hit.row * CELL_PX;
+	ray->end.y = ray->hit_cell.row * CELL_PX;
 	if (ray->end.y < ray->start.y)
 		ray->end.y += CELL_PX;
 	delta_y = ray->end.y - ray->start.y;
@@ -56,15 +56,15 @@ static void	rc_hor_point(t_ray *ray)
 static void	rc_hor_img(t_ray *ray, t_cub *cub)
 {
 	if (ray->end.y < ray->start.y)
-		ray->image = cub->am.walls[SO];
+		ray->image = cub->assets.wall[SO];
 	else
-		ray->image = cub->am.walls[NO];
-	ray->im_position = fmod(ray->end.x, CELL_PX) * ray->image->width / CELL_PX;
+		ray->image = cub->assets.wall[NO];
+	ray->im_pos = fmod(ray->end.x, CELL_PX) * ray->image->width / CELL_PX;
 }
 
 void	rc_process(t_ray *ray, t_cub *cub)
 {
-	if (ray->hit_direction == VERTICAL)
+	if (ray->hit_dir == VER)
 	{
 		rc_ver_point(ray);
 		rc_ver_img(ray, cub);
