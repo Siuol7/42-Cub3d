@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 17:39:34 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/03 18:09:04 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/05 09:29:35 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ static void clean_draw(t_cub *c, t_assets *as)
 		mlx_delete_image(c->mlx, as->floor);
 	if (as->scene)
 		mlx_delete_image(c->mlx, as->scene);
-	if (as->map)
-		mlx_delete_image(c->mlx, as->map);
+	if (as->canvas)
+		mlx_delete_image(c->mlx, as->canvas);
 	if (as->m_map)
 		mlx_delete_image(c->mlx, as->m_map);
 	if (as->m_wall)

@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 10:33:05 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/03 02:01:27 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/05 09:31:25 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	assets_framing(t_cub *c, t_assets *as)
 	assets_frame(c, &as->ceiling, WIDTH, HEIGHT / 2);
 	assets_frame(c, &as->floor, WIDTH, HEIGHT / 2);
 	assets_frame(c, &as->scene, WIDTH, HEIGHT);
-	assets_frame(c, &as->map, c->map.width, c->map.height);
+	assets_frame(c, &as->canvas, c->map.width, c->map.height);
 	assets_frame(c, &as->m_map, M_WIDTH, M_HEIGHT);
 	assets_frame(c, &as->m_wall, CELL_PX, CELL_PX);
 	assets_frame(c, &as->m_player, M_PLAYER_SIZE, M_PLAYER_SIZE);

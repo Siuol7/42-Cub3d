@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 10:53:08 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/03 15:54:35 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/05 09:27:50 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ typedef struct s_assets
 	mlx_image_t	*wall[4];
 	mlx_image_t	*ceiling;
 	mlx_image_t	*floor;
-	mlx_image_t	*map;
+	mlx_image_t	*canvas;
 	mlx_image_t	*scene;
 	mlx_image_t	*m_wall;
 	mlx_image_t	*m_player;
