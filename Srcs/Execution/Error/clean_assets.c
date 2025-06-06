@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 17:39:34 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/05 09:29:35 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/06 00:17:49 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	clean_sprite(t_cub *c, t_assets *as)
 {
-	int	i;
+	uint32_t	i;
 
 	i = 0;
 	if (!as->sprite)

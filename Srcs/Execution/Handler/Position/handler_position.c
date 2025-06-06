@@ -6,13 +6,13 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 18:10:42 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/05 23:06:31 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/05 23:37:21 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	position(t_cub *c)
+void	handler_position(t_cub *c)
 {
 	t_player	*player;
 

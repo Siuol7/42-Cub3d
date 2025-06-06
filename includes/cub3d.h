@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:56:04 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/05 23:14:56 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/06 10:30:13 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # define WIDTH 1280
 # define HEIGHT 720
 # define PI 3.14159265359
+# define FOV 1.04719755120f
 # define CELL_PX 32
 
 # include <stdio.h>
@@ -53,6 +54,7 @@ typedef struct s_cub
 void	system_init(t_cub *c);
 void	cub3d_ends(t_cub* c, char *str, int exitcode);
 void 	clean_assets(t_cub *c, t_assets *as);
+void	display(t_cub *c);
 
 #endif
 // # define FOV 1.04719755120

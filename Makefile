@@ -6,7 +6,7 @@
 #    By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/18 22:10:11 by tripham           #+#    #+#              #
-#    Updated: 2025/06/05 23:05:30 by caonguye         ###   ########.fr        #
+#    Updated: 2025/06/06 10:27:48 by caonguye         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,7 +75,8 @@ EXEC_SRCS	= $(INIT_DIR)/system_init.c							\
 			  $(HANDLER_DIR)/handler_loop.c						\
 			  $(HANDLER_DIR)/handler_close.c					\
 			  $(ERROR_DIR)/clean_assets.c						\
-			  $(ERROR_DIR)/error.c
+			  $(ERROR_DIR)/error.c								\
+			  $(EXEC_DIR)/Display/display.c
 
 MAIN_SRCS 	= $(MAIN)/main.c									\
 			  $(MAIN)/end.c										\

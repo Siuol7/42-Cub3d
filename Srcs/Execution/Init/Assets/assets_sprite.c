@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 20:08:50 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/05 22:48:10 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/06 10:31:25 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	assets_copy_paste(t_cub *c, t_assets* as, int i)
 
 void	assets_sprite_framing(t_cub *c, t_assets *as)
 {
-	int	i;
+	uint32_t	i;
 
 	i = 0;
 	while (i < as->sprite->frame_cnt)

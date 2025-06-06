@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 02:03:54 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/03 02:04:34 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/06 00:17:09 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,8 @@
 
 void	handler_close(void* data)
 {
+	t_cub	*c;
 
+	c = (t_cub *)data;
+	cub3d_ends(c, "Done", EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 18:15:21 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/05 11:33:56 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/06 10:21:58 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,5 @@ void	system_init(t_cub *c)
 	ray_init(c);
 	assets_init(c);
 	hook_init(c);
+	display(c);
 }

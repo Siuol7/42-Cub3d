@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 22:55:17 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/05 23:04:23 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/05 23:34:48 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	render_sprite(t_cub *c, t_sprite *sprite, double elapsed_time)
 {
-	if (!c->sprite.attack)
+	if (!c->player.attack)
 		return ;
 	sprite->elapsed_time += elapsed_time;
 	if (sprite->elapsed_time >= FRAME_INTERVAL)
@@ -22,9 +22,9 @@ void	render_sprite(t_cub *c, t_sprite *sprite, double elapsed_time)
 		sprite->frame_id++;
 		sprite->elapsed_time -= FRAME_INTERVAL;
 	}
-	if (sprite->frame_id >= sprite->frame)
+	if (sprite->frame_id >= sprite->frame_cnt)
 	{
 		sprite->frame_id = 0;
-		c->sprite.attack = 0;
+		c->player.attack = 0;
 	}
 }

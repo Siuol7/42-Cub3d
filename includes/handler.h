@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 01:35:22 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/05 23:04:49 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/05 23:38:03 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ double		move_angle_rescale(double angle);
 t_dpoint	move_dir(t_dpoint cur, double angle, keys_t key);
 
 //POSITION
+
 int			position_validate(t_cub *c, int x, int32_t y);
-void		position(t_cub *c);
+void		handler_position(t_cub *c);
 void		position_back_y(t_player *player, int32_t y);
 void		position_back_x(t_player *player, int x);
 
@@ -44,6 +45,7 @@ void		rc_hit_point(t_ray *ray, t_cub *cub);
 void		rc_process(t_ray *ray, t_cub *cub);
 
 //RENDER
+void		handler_render(t_cub *c);
 void		render_miniplayer(t_cub *c, t_assets *as);
 uint8_t		*render_px_get(mlx_image_t *img, int32_t x, int32_t y);
 int			render_px_cpy(mlx_image_t *dst,	mlx_image_t *src, int32_t copy_till_x,

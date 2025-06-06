@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 21:41:03 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/05 23:26:37 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/05 23:31:39 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	ft_pxcpy(t_cub *c, int32_t x, int32_t y_pixel, int32_t image_pos_y)
 
 	if ((uint8_t)image_pos_y < c->rays[x]->image->height - 1)
 	{
-		dest_pixels = (uint32_t *)render_px_get(c->am.scene, x, y_pixel);
+		dest_pixels = (uint32_t *)render_px_get(c->assets.scene, x, y_pixel);
 		src_pixels = (uint32_t *)render_px_get(c->rays[x]->image,
 				c->rays[x]->im_pos,
 				image_pos_y);
@@ -47,7 +47,7 @@ static void	ft_pxcpy(t_cub *c, int32_t x, int32_t y_pixel, int32_t image_pos_y)
 	}
 	else
 	{
-		dest_pixels = (uint32_t *)render_px_get(c->am.scene, x, y_pixel);
+		dest_pixels = (uint32_t *)render_px_get(c->assets.scene, x, y_pixel);
 		src_pixels = (uint32_t *)render_px_get(c->rays[x]->image,
 				c->rays[x]->im_pos,
 				c->rays[x]->image->height - 1);
@@ -90,7 +90,7 @@ void	render_scene(t_cub *c)
 
 	i = 0;
 	dist_planecam = (WIDTH / 2) / tan(FOV / 2);
-	clear_image(c->am.scene);
+	clear_image(c->assets.scene);
 	while (i < WIDTH)
 	{
 		wall_h = (CELL_PX / c->rays[i]->distance) * dist_planecam;

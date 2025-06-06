@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 10:53:08 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/05 23:29:18 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/06 10:29:09 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct	s_sprite
 	uint32_t		sprite_w;
 	uint32_t		sprite_h;
 	uint32_t		frame_id;
-	int				frame_cnt;
+	uint32_t		frame_cnt;
 	double			elapsed_time;
 }	t_sprite;
 
@@ -82,5 +82,6 @@ void			assets_copy_paste(t_cub *c, t_assets* as, int i);
 void			assets_coloring(t_cub *c, t_assets *as);
 t_sprite		*assets_sprite_frame(t_cub *c,int size,	t_resized status, char *png_src);
 mlx_image_t*	assets_graphic(t_cub *c, t_resized status, const char *png_src);
+
 
 #endif

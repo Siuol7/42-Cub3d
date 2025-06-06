@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 01:34:46 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/03 01:42:33 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/05 23:37:46 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ void	handler_loop(void* data)
 	c = (t_cub*)data;
 	handler_input(c);
 	handler_position(c);
-	handler_ray_casting(c);
+	handler_raycasting(c);
 	handler_render(c);
 }
