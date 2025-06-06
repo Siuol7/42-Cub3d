@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 10:25:02 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/06 10:32:13 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/06 11:29:56 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	display(t_cub *c)
 	display_to_windows(c, as->scene, 0, 0);
 	display_to_windows(c, as->m_map_bg, M_OFFSET, M_OFFSET);
 	display_to_windows(c, as->m_map, M_OFFSET, M_OFFSET);
-	display_to_windows(c, as->player,
-		WIDTH / 2 - (as->player->width / 2),
+	display_to_windows(c, as->player, WIDTH / 2 - (as->player->width / 2),
 		HEIGHT - as->player->height + 10);
 }

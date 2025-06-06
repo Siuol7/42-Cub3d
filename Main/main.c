@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:55:42 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/05 11:17:02 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/06 21:26:41 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@ int	main(int ac, char **av)
 		return (EXIT_FAILURE);
 	}
 	close(fd);
+	cub.map.width = 1056;
+	cub.map.height = 448;
+	printf("map size: %d x %d\n", cub.map.width, cub.map.height);
+	system_init(&cub);
+	mlx_loop(cub.mlx);
 	cub3d_ends(&cub, "Done", 0);
 	return (EXIT_SUCCESS);
 }

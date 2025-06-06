@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 00:02:45 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/02 18:30:48 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/06 20:17:51 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,21 @@
 
 static void	assets_sprite(t_cub *c, t_assets *as)
 {
-	as->sprite = assets_sprite_frame(c, 5,
-		(t_resized){0, 0, 0}, "./assets/sprite/stab.png");
+	as->sprite = assets_sprite_frame(c, 5, (t_resized){0, 0, 0}, SPRITE);
 	assets_sprite_framing(c, as);
 }
 
 static void	assets_wall(t_cub* c, t_assets* as)
 {
 	as->wall[NO] = assets_graphic(c,
-			(t_resized){0, CELL_PX, CELL_PX}, c->map.no);
+			(t_resized){0, CELL_PX, CELL_PX}, "./assets/textures/north.png");
 	as->wall[SO] = assets_graphic(c,
-			(t_resized){0, CELL_PX, CELL_PX}, c->map.so);
+			(t_resized){0, CELL_PX, CELL_PX}, "./assets/textures/south.png");
 	as->wall[EA] = assets_graphic(c,
-			(t_resized){0, CELL_PX, CELL_PX}, c->map.ea);
+			(t_resized){0, CELL_PX, CELL_PX}, "./assets/textures/west.png");
 	as->wall[WE] = assets_graphic(c,
-			(t_resized){0, CELL_PX, CELL_PX}, c->map.we);
-}
+			(t_resized){0, CELL_PX, CELL_PX}, "./assets/textures/east.png");
+		}
 
 static void	assets_main(t_cub* c, t_assets *as)
 {
@@ -42,7 +41,7 @@ void	assets_init(t_cub *c)
 	t_assets	*assets;
 
 	assets = &c->assets;
+	assets_sprite(c, assets);
 	assets_main(c, assets);
 	assets_wall(c, assets);
-	assets_sprite(c, assets);
 }

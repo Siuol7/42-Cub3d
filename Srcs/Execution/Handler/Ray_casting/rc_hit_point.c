@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 17:35:48 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/04 18:31:39 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/06 20:27:00 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ static void	rc_init(t_distance *distance, t_point *step, t_ray *ray)
 		distance->hor_line = fabs((CELL_PX - cur.y) / ray->dir.y);
 }
 
-void	rc_hit_point(t_ray *ray, t_cub *cub)
+void	rc_hit_point(t_ray *ray, t_cub *c)
 {
 	t_distance	distance;
 	t_point		step;
 
 	rc_init(&distance, &step, ray);
-	while (cub->map.grid[ray->hit_cell.row][ray->hit_cell.col] != '1')
+	while (c->map.grid[ray->hit_cell.row][ray->hit_cell.col] != '1')
 	{
 		if (distance.ver_line < distance.hor_line)
 		{

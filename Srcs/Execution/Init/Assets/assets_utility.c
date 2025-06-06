@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 10:33:05 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/05 09:31:25 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/06 20:21:23 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,15 @@ void	assets_frame(t_cub *c, mlx_image_t **img, uint32_t w,	uint32_t h)
 
 void	assets_framing(t_cub *c, t_assets *as)
 {
+	assets_frame(c, &as->player, as->sprite->sprite_w, as->sprite->sprite_h);
 	assets_frame(c, &as->ceiling, WIDTH, HEIGHT / 2);
 	assets_frame(c, &as->floor, WIDTH, HEIGHT / 2);
 	assets_frame(c, &as->scene, WIDTH, HEIGHT);
+	if (c->map.grid)
+		printf("before.c yes\n");
 	assets_frame(c, &as->canvas, c->map.width, c->map.height);
+	if (!c->map.grid)
+		printf("after.c no\n");
 	assets_frame(c, &as->m_map, M_WIDTH, M_HEIGHT);
 	assets_frame(c, &as->m_wall, CELL_PX, CELL_PX);
 	assets_frame(c, &as->m_player, M_PLAYER_SIZE, M_PLAYER_SIZE);
