@@ -6,7 +6,7 @@
 /*   By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 21:59:47 by tripham           #+#    #+#             */
-/*   Updated: 2025/05/27 21:12:31 by tripham          ###   ########.fr       */
+/*   Updated: 2025/06/07 23:58:55 by tripham          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,7 @@ int	read_grid(t_map *map, char *line)
 	if (len > map->max_cols)
 		map->max_cols = len;
 	map->max_rows++;
+	if (map->max_rows > 120 || map->max_cols > 120)
+		return (error_ret("Map is to large.", EXIT_FAILURE));
 	return (EXIT_SUCCESS);
 }
