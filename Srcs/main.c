@@ -6,7 +6,7 @@
 /*   By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:55:42 by caonguye          #+#    #+#             */
-/*   Updated: 2025/05/27 21:36:01 by tripham          ###   ########.fr       */
+/*   Updated: 2025/06/07 17:41:20 by tripham          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	main(int ac, char **av)
 		return (EXIT_FAILURE);
 	if (read_map(fd, &cub))
 		return (EXIT_FAILURE);
+	cub.map.width = cub.map.max_cols * M_PX;
+	cub.map.height = cub.map.max_rows * M_PX;
 	close(fd);
 	clean_cub3d(&cub);
 	return (EXIT_SUCCESS);
