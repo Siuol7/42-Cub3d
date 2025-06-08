@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 00:02:45 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/08 12:22:53 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/08 22:01:09 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ static void	assets_sprite(t_cub *c, t_assets *as)
 static void	assets_wall(t_cub* c, t_assets* as)
 {
 	as->wall[NO] = assets_graphic(c,
-			(t_resized){0, CELL_PX, CELL_PX}, "./assets/textures/north.png");
+			(t_resized){0, CELL_PX, CELL_PX}, c->map.no);
 	as->wall[SO] = assets_graphic(c,
-			(t_resized){0, CELL_PX, CELL_PX}, "./assets/textures/south.png");
+			(t_resized){0, CELL_PX, CELL_PX}, c->map.so);
 	as->wall[EA] = assets_graphic(c,
-			(t_resized){0, CELL_PX, CELL_PX}, "./assets/textures/west.png");
+			(t_resized){0, CELL_PX, CELL_PX}, c->map.ea);
 	as->wall[WE] = assets_graphic(c,
-			(t_resized){0, CELL_PX, CELL_PX}, "./assets/textures/east.png");
+			(t_resized){0, CELL_PX, CELL_PX}, c->map.we);
 		}
 
 static void	assets_main(t_cub* c, t_assets *as)
