@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 21:40:40 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/05 23:29:45 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/08 15:00:53 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	render_x(t_cub *c, int32_t *x, int32_t *offset_x)
 	int32_t	start_x;
 
 	*offset_x = M_WIDTH;
-	start_x = c->player.cur_pos.x - (M_WIDTH / 2);
+	start_x = c->player.cur_pos.x - (M_WIDTH / 2) / M_PIXEL * M_PIXEL;
 	*x = max_point(start_x, 0);
 	if (*x + M_WIDTH > c->map.width)
 	{
@@ -32,6 +32,7 @@ static void	render_x(t_cub *c, int32_t *x, int32_t *offset_x)
 		if (*x == 0)
 			*offset_x = c->map.width;
 	}
+	*x = (*x / M_PIXEL) * M_PIXEL;
 }
 
 static void	render_y(t_cub *c, int32_t *y, int32_t *offset_y)
@@ -39,7 +40,7 @@ static void	render_y(t_cub *c, int32_t *y, int32_t *offset_y)
 	int32_t	start_y;
 
 	*offset_y = M_HEIGHT;
-	start_y = c->player.cur_pos.y - (M_HEIGHT / 2);
+	start_y = c->player.cur_pos.y - (M_HEIGHT / 2) / M_PIXEL * M_PIXEL;
 	*y = max_point(start_y, 0);
 	if (*y + M_HEIGHT > c->map.height)
 	{
@@ -47,6 +48,8 @@ static void	render_y(t_cub *c, int32_t *y, int32_t *offset_y)
 		if (*y == 0)
 			*offset_y = c->map.height;
 	}
+	*y = (*y / M_PIXEL) * M_PIXEL;
+
 }
 
 void	render_minimap(t_cub *c)

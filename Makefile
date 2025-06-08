@@ -6,7 +6,7 @@
 #    By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/18 22:10:11 by tripham           #+#    #+#              #
-#    Updated: 2025/06/06 10:27:48 by caonguye         ###   ########.fr        #
+#    Updated: 2025/06/08 13:47:00 by caonguye         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,7 @@ EXEC_SRCS	= $(INIT_DIR)/system_init.c							\
 			  $(HANDLER_DIR)/Render/render_scene.c				\
 			  $(HANDLER_DIR)/Render/render_utility.c			\
 			  $(HANDLER_DIR)/Render/render_sprite.c				\
+			  $(HANDLER_DIR)/Render/render_canvas.c				\
 			  $(HANDLER_DIR)/handler_loop.c						\
 			  $(HANDLER_DIR)/handler_close.c					\
 			  $(ERROR_DIR)/clean_assets.c						\

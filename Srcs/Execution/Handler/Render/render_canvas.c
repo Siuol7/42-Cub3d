@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 13:34:15 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/08 13:46:01 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/08 14:09:31 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	render_miniwall(t_cub *c, mlx_image_t *map_img, char ele)
 {
 	if (ele == '1')
 	{
-		if (!ft_copy_pixels(map_img, c->assets.m_wall, M_PIXEL, M_PIXEL))
+		if (!render_px_cpy(map_img, c->assets.m_wall, M_PIXEL, M_PIXEL))
 			cub3d_ends(c, "Rendering miniwall failed", EXIT_FAILURE);
 	}
 }
@@ -33,7 +33,7 @@ void	render_canvas(t_cub *c, mlx_image_t *map_img, char **grid)
 		col = 0;
 		while (col < c->map.max_cols)
 		{
-			map_img->pixels = ft_get_pixels(map_img, col * M_PIXEL,
+			map_img->pixels = render_px_get(map_img, col * M_PIXEL,
 													row * M_PIXEL);
 			if (!map_img->pixels)
 				cub3d_ends(c, "Rendering canvas failed", EXIT_FAILURE);
@@ -43,5 +43,4 @@ void	render_canvas(t_cub *c, mlx_image_t *map_img, char **grid)
 		}
 		row++;
 	}
-	return (1);
 }
