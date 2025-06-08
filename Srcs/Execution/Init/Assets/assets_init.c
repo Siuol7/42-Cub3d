@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 00:02:45 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/06 20:17:51 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/08 12:22:53 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	assets_sprite(t_cub *c, t_assets *as)
 {
-	as->sprite = assets_sprite_frame(c, 5, (t_resized){0, 0, 0}, SPRITE);
+	as->sprite = assets_sprite_frame(c, 4, (t_resized){0, 0, 0}, SPRITE);
 	assets_sprite_framing(c, as);
 }
 

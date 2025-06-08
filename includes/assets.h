@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 10:53:08 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/06 22:46:49 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/08 13:43:48 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,15 @@
 
 # define M_OFFSET	    10
 # define M_PLAYER_SIZE	10
+# define M_PIXEL		32
 # define SPRITE			"./assets/sprites/stab1.png"
 # define M_SPACE		"./assets/textures/mini_space.png"
 # define M_WALL			"./assets/textures/mini_wall.png"
 # define M_PLAYER		"./assets/textures/mini_player.png"
 # define M_WIDTH 		200
 # define M_HEIGHT 		200
-# define SPRITE_TIME	0.4
-# define FRAMES			5
+# define SPRITE_TIME	3
+# define FRAMES			4
 # define FRAME_INTERVAL	(SPRITE_TIME / FRAMES)
 
 # include "utility.h"
