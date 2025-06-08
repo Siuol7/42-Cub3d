@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 21:41:09 by tripham           #+#    #+#             */
-/*   Updated: 2025/06/05 09:28:38 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/08 21:55:03 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ typedef struct s_dpoint
 */
 typedef struct s_color
 {
+	uint32_t	a;
 	uint32_t	r;
 	uint32_t	g;
 	uint32_t	b;
-	uint32_t	a;
 }	t_color;
 
 int		map_validation(char *path);
