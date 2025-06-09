@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:56:04 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/08 22:04:06 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/09 12:29:43 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 # define PI 3.14159265359
 # define FOV 1.04719755120f
 # define CELL_PX 32
+# define DBL_MAX 1.7976931348623157e+308
 
 # include <stdio.h>
-# include <float.h>
 # include <math.h>
 # include "libft.h"
 # include "ft_printf.h"
@@ -52,10 +52,8 @@ typedef struct s_cub
 }	t_cub;
 
 void	system_init(t_cub *c);
-void	cub3d_ends(t_cub* c, char *str, int exitcode);
-void 	clean_assets(t_cub *c, t_assets *as);
+void	cub3d_ends(t_cub *c, char *str, int exitcode);
+void	clean_assets(t_cub *c, t_assets *as);
 void	display(t_cub *c);
 
 #endif
-// # define FOV 1.04719755120
-// # define CELL_PX 32
