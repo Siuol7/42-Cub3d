@@ -6,11 +6,20 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 17:39:34 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/09 12:19:24 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/09 14:05:35 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static void	clean_rays(t_cub *c)
+{
+	if (c->rays)
+	{
+		ft_free_2d((void **)c->rays);
+		c->rays = NULL;
+	}
+}
 
 static void	clean_sprite(t_cub *c, t_assets *as)
 {
@@ -45,6 +54,8 @@ static void	clean_png(t_cub *c, t_assets *as)
 
 static void	clean_draw(t_cub *c, t_assets *as)
 {
+	if (as->player)
+		mlx_delete_image(c->mlx, as->player);
 	if (as->ceiling)
 		mlx_delete_image(c->mlx, as->ceiling);
 	if (as->floor)
@@ -72,4 +83,5 @@ void	clean_assets(t_cub *c, t_assets *as)
 	clean_draw(c, as);
 	clean_png(c, as);
 	clean_sprite(c, as);
+	clean_rays(c);
 }
