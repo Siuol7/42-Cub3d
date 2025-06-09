@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 17:39:34 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/09 14:05:35 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/09 17:18:44 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,15 @@
 
 static void	clean_rays(t_cub *c)
 {
-	if (c->rays)
-	{
-		ft_free_2d((void **)c->rays);
-		c->rays = NULL;
-	}
+	int i;
+
+	if (!c->rays)
+		return;
+	i = 0;
+	while (i < WIDTH)
+		free(c->rays[i++]);
+	free(c->rays);
+	c->rays = NULL;
 }
 
 static void	clean_sprite(t_cub *c, t_assets *as)
