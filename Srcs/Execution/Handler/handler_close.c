@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean_cub3d.c                                      :+:      :+:    :+:   */
+/*   handler_close.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/24 18:10:34 by tripham           #+#    #+#             */
-/*   Updated: 2025/05/24 18:11:46 by tripham          ###   ########.fr       */
+/*   Created: 2025/06/03 02:03:54 by caonguye          #+#    #+#             */
+/*   Updated: 2025/06/09 09:56:43 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	clean_cub3d(t_cub *cub)
+void	handler_close(void *data)
 {
-	if (cub)
-	{
-		clean_map(&cub->map);
-	}
+	t_cub	*c;
+
+	c = (t_cub *)data;
+	cub3d_ends(c, "Done", EXIT_SUCCESS);
 }

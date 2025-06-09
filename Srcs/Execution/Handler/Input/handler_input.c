@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   asset_manager.h                                    :+:      :+:    :+:   */
+/*   handler_input.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/24 17:52:33 by tripham           #+#    #+#             */
-/*   Updated: 2025/06/07 17:39:32 by tripham          ###   ########.fr       */
+/*   Created: 2025/06/03 01:39:42 by caonguye          #+#    #+#             */
+/*   Updated: 2025/06/09 10:43:50 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ASSET_MANAGER_H
-# define ASSET_MANAGER_H
+#include "cub3d.h"
 
-# define M_PLAYER_SIZE	10
-# define M_PX		    32
-#endif
+void	handler_input(t_cub *c)
+{
+	input_keyboard(c);
+	input_mouse(c);
+}

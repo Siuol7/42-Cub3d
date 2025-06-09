@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utility.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 21:41:09 by tripham           #+#    #+#             */
-/*   Updated: 2025/05/26 19:40:27 by tripham          ###   ########.fr       */
+/*   Updated: 2025/06/08 21:55:03 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # ifndef G_BUFFER
 #  define G_BUFFER 1000
-# endif 
+# endif
 
 # include "MLX42.h"
 # include "libft.h"
@@ -49,10 +49,10 @@ typedef struct s_dpoint
 */
 typedef struct s_color
 {
+	uint32_t	a;
 	uint32_t	r;
 	uint32_t	g;
 	uint32_t	b;
-	uint32_t	a;
 }	t_color;
 
 int		map_validation(char *path);
@@ -65,7 +65,7 @@ int		ft_2d_len(char **arr);
 void	ft_clean_2d(char ***arr);
 int		cnt_comma(char *str);
 int		get_color(char **rgb, int *c_or_f);
-void	clean_cub3d(t_cub *cub);
+
 // ERROR
 int		multi_err_ret(char *str1, char *str2, int num);
 char	*error_ret_null(char *str);

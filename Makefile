@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+         #
+#    By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/18 22:10:11 by tripham           #+#    #+#              #
-#    Updated: 2025/05/26 18:49:19 by tripham          ###   ########.fr        #
+#    Updated: 2025/06/08 22:34:48 by caonguye         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,33 +20,69 @@ INCLUDES   = -I includes 								\
 
 # --- DIRECTORIES ---
 SRC_DIR		= Srcs
+MAIN		= Main
 PARSE_DIR	= Srcs/parsing
+EXEC_DIR	= Srcs/Execution
+INIT_DIR	= $(EXEC_DIR)/Init
+HANDLER_DIR = $(EXEC_DIR)/Handler
+ERROR_DIR	= $(EXEC_DIR)/Error
 LIB_DIR		= Library
 GNL_DIR		= $(LIB_DIR)/get_next_line
 LIBFT_DIR	= $(LIB_DIR)/libft
 PRINTF_DIR	= $(LIB_DIR)/ft_printf_fd
 MLX42_DIR	= libs/MLX42
 
-PARSE_SRCS = $(PARSE_DIR)/map/map_validation.c 			\
-			 $(PARSE_DIR)/map/is_closed.c				\
-			 $(PARSE_DIR)/map/grid_validate.c			\
-			 $(PARSE_DIR)/map/png_validate.c			\
-			 $(PARSE_DIR)/map/read_grid.c				\
-             $(PARSE_DIR)/map/map_utils.c				\
-			 $(PARSE_DIR)/map/read_ele.c				\
-			 $(PARSE_DIR)/map/read_map.c				\
-			 $(PARSE_DIR)/utils_parsing/ft_error.c		\
-			 $(PARSE_DIR)/utils_parsing/ft_space.c		\
-			 $(PARSE_DIR)/utils_parsing/ft_2d_len.c		\
-			 $(PARSE_DIR)/utils_parsing/ft_clean_2d.c	\
-			 $(PARSE_DIR)/utils_parsing/ft_readline.c	\
-			 $(PARSE_DIR)/utils_parsing/ft_get_color.c	\
-			 $(PARSE_DIR)/utils_parsing/clean_cub3d.c	\
-			 $(PARSE_DIR)/utils_parsing/ft_free_utils.c
+PARSE_SRCS 	= $(PARSE_DIR)/map/map_validation.c 				\
+			  $(PARSE_DIR)/map/is_closed.c						\
+			  $(PARSE_DIR)/map/grid_validate.c					\
+			  $(PARSE_DIR)/map/png_validate.c					\
+			  $(PARSE_DIR)/map/read_grid.c						\
+              $(PARSE_DIR)/map/map_utils.c						\
+			  $(PARSE_DIR)/map/read_ele.c						\
+			  $(PARSE_DIR)/map/read_map.c						\
+			  $(PARSE_DIR)/utils_parsing/ft_error.c				\
+			  $(PARSE_DIR)/utils_parsing/ft_space.c				\
+			  $(PARSE_DIR)/utils_parsing/ft_2d_len.c			\
+			  $(PARSE_DIR)/utils_parsing/ft_clean_2d.c			\
+			  $(PARSE_DIR)/utils_parsing/ft_readline.c			\
+			  $(PARSE_DIR)/utils_parsing/ft_get_color.c			\
+			  $(PARSE_DIR)/utils_parsing/ft_free_utils.c
 
-MAIN_SRCS  = $(SRC_DIR)/main.c
+EXEC_SRCS	= $(INIT_DIR)/system_init.c							\
+			  $(INIT_DIR)/Assets/assets_color.c					\
+			  $(INIT_DIR)/Assets/assets_graphic.c				\
+			  $(INIT_DIR)/Assets/assets_init.c					\
+			  $(INIT_DIR)/Assets/assets_sprite.c				\
+			  $(INIT_DIR)/Assets/assets_utility.c				\
+			  $(INIT_DIR)/Ray/ray_init.c						\
+			  $(HANDLER_DIR)/Input/handler_input.c				\
+			  $(HANDLER_DIR)/Input/input_keyboard.c				\
+			  $(HANDLER_DIR)/Input/input_mouse.c				\
+			  $(HANDLER_DIR)/Input/input_move.c					\
+			  $(HANDLER_DIR)/Position/handler_position.c		\
+			  $(HANDLER_DIR)/Position/position_back.c			\
+			  $(HANDLER_DIR)/Position/position_validate.c		\
+			  $(HANDLER_DIR)/Ray_casting/handler_raycasting.c	\
+			  $(HANDLER_DIR)/Ray_casting/rc_hit_point.c			\
+			  $(HANDLER_DIR)/Ray_casting/rc_process.c			\
+			  $(HANDLER_DIR)/Render/handler_render.c			\
+			  $(HANDLER_DIR)/Render/render_minimap.c			\
+			  $(HANDLER_DIR)/Render/render_miniplayer.c			\
+			  $(HANDLER_DIR)/Render/render_player.c				\
+			  $(HANDLER_DIR)/Render/render_scene.c				\
+			  $(HANDLER_DIR)/Render/render_utility.c			\
+			  $(HANDLER_DIR)/Render/render_sprite.c				\
+			  $(HANDLER_DIR)/Render/render_canvas.c				\
+			  $(HANDLER_DIR)/handler_loop.c						\
+			  $(HANDLER_DIR)/handler_close.c					\
+			  $(ERROR_DIR)/clean_assets.c						\
+			  $(ERROR_DIR)/error.c								\
+			  $(EXEC_DIR)/Display/display.c
 
-SRCS       = $(MAIN_SRCS) $(PARSE_SRCS) $(GNL_SRCS)
+MAIN_SRCS 	= $(MAIN)/main.c									\
+			  $(MAIN)/end.c										\
+
+SRCS       = $(MAIN_SRCS) $(PARSE_SRCS) $(EXEC_SRCS) $(GNL_SRCS)
 OBJS       = $(SRCS:.c=.o)
 
 # --- LIBRARIES ---
@@ -60,24 +96,30 @@ MLX_LINK   = -Llibs/MLX42/build -lmlx42 -lglfw -ldl -pthread -lm
 all: mlx42 $(LIBFT) $(PRINTF) $(NAME)
 
 mlx42:
-	@if [ ! -d "$(MLX42_DIR)" ]; then \
-	  git clone https://github.com/codam-coding-college/MLX42.git $(MLX42_DIR); \
-	  mkdir -p $(MLX42_DIR)/build; \
-	  cd $(MLX42_DIR)/build && cmake .. && cmake --build . -j4; \
-	  rm -rf $(MLX42_DIR)/.git; \
+	@ if [ ! -d "$(MLX42_DIR)" ]; then \
+	    printf "Setting up MLX42…\n"; \
+	    git clone https://github.com/codam-coding-college/MLX42.git $(MLX42_DIR) > /dev/null 2>&1; \
+	    mkdir -p $(MLX42_DIR)/build; \
+	    ( \
+	      cd $(MLX42_DIR)/build && \
+	      cmake .. > /dev/null 2>&1 && \
+	      cmake --build . -j4 > /dev/null 2>&1 \
+	    ); \
+	    rm -rf $(MLX42_DIR)/.git; \
+	    printf "Done\n"; \
 	fi
 
 $(LIBFT):
-	@$(MAKE) -C $(LIBFT_DIR)
+	@$(MAKE)  -s -C $(LIBFT_DIR)
 
 $(PRINTF):
-	@$(MAKE) -C $(PRINTF_DIR)
+	@$(MAKE)  -s -C $(PRINTF_DIR)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LIBFT) $(PRINTF) $(MLX_LINK) -o $@
+	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LIBFT) $(PRINTF) $(MLX_LINK) -o $@
 
-%.o: %.c
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+%.o:%.c
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 # ${NAME}	:	${OBJS} ${LIBFT} ${PRINTF}
 # 		@printf "\033[1;32m💻Launching Cub3D-42VN-Pasila"
@@ -94,17 +136,17 @@ $(NAME): $(OBJS)
 # 			printf "\b \b"; sleep 0.3; \
 # 		done; \
 # 		printf "\033[0m\n"
-	
+
 clean:
-	@$(MAKE) clean -C $(LIBFT_DIR)
-	@$(MAKE) clean -C $(PRINTF_DIR)
-	rm -f $(OBJS)
+	@$(MAKE) clean -s -C $(LIBFT_DIR)
+	@$(MAKE) clean -s -C $(PRINTF_DIR)
+	@rm -f $(OBJS)
 
 fclean: clean
-	@$(MAKE) fclean -C $(LIBFT_DIR)
-	@$(MAKE) fclean -C $(PRINTF_DIR)
-	rm -f $(NAME)
-	rm -rf libs
+	@$(MAKE) fclean -s -C $(LIBFT_DIR)
+	@$(MAKE) fclean -s -C $(PRINTF_DIR)
+	@rm -f $(NAME)
+	@rm -rf libs
 
 re: fclean all
 
