@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 01:54:13 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/06 21:56:10 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/09 10:44:19 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ static void	input_mouseclick(t_cub *c)
 	}
 	prev_status = cur_status;
 }
-
 
 void	input_mouse(t_cub *c)
 {

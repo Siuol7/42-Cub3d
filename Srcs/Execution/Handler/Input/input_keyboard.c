@@ -6,13 +6,13 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 01:53:55 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/05 22:50:39 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/09 10:43:59 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	input_keyboard(t_cub* c)
+void	input_keyboard(t_cub *c)
 {
 	t_dpoint	cur_pos;
 

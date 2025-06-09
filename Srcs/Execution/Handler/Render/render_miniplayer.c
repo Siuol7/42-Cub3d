@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 21:40:25 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/08 14:45:29 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/09 12:18:35 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	render_miniplayer(t_cub *c, t_assets *as)
 
 	map_org = as->canvas->pixels;
 	m_player_org = as->m_player->pixels;
-	player_px = render_px_get(as->canvas, c->player.prev_pos.x, c->player.prev_pos.y);
+	player_px = render_px_get(as->canvas, c->player.prev_pos.x,
+			c->player.prev_pos.y);
 	render_px_del(player_px, as->canvas->width, M_PLAYER_SIZE, M_PLAYER_SIZE);
 	as->canvas->pixels = render_px_get(
 			as->canvas, c->player.cur_pos.x, c->player.cur_pos.y);

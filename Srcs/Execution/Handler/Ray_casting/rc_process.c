@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 17:35:40 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/05 23:27:43 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/09 11:46:36 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,6 @@ void	rc_process(t_ray *ray, t_cub *cub)
 		ray->distance = fabs(ray->end.y - ray->start.y);
 	else
 		ray->distance = fabs((ray->end.x - ray->start.x) / ray->dir.x);
-	ray->distance *= fabs(cos(move_angle_rescale(cub->player.angle -
-					ray->angle)));
+	ray->distance *= fabs(cos(move_angle_rescale(cub->player.angle
+					- ray->angle)));
 }

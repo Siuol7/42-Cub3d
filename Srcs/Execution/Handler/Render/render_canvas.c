@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 13:34:15 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/08 14:09:31 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/09 12:18:01 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	render_canvas(t_cub *c, mlx_image_t *map_img, char **grid)
 		while (col < c->map.max_cols)
 		{
 			map_img->pixels = render_px_get(map_img, col * M_PIXEL,
-													row * M_PIXEL);
+					row * M_PIXEL);
 			if (!map_img->pixels)
 				cub3d_ends(c, "Rendering canvas failed", EXIT_FAILURE);
 			render_miniwall(c, map_img, grid[row][col]);

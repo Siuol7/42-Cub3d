@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 17:39:34 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/06 00:17:49 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/09 12:19:24 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	clean_png(t_cub *c, t_assets *as)
 		mlx_delete_image(c->mlx, as->wall[EA]);
 }
 
-static void clean_draw(t_cub *c, t_assets *as)
+static void	clean_draw(t_cub *c, t_assets *as)
 {
 	if (as->ceiling)
 		mlx_delete_image(c->mlx, as->ceiling);
@@ -65,7 +65,7 @@ static void clean_draw(t_cub *c, t_assets *as)
 		mlx_delete_image(c->mlx, as->m_map_bg);
 }
 
-void clean_assets(t_cub *c, t_assets *as)
+void	clean_assets(t_cub *c, t_assets *as)
 {
 	if (!c || !as)
 		return ;

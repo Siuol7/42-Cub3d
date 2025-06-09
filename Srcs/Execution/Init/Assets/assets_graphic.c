@@ -6,19 +6,19 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 01:12:01 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/06 10:51:29 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/09 12:20:50 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-mlx_image_t*	assets_graphic(t_cub *c, t_resized status, const char *png_src)
+mlx_image_t	*assets_graphic(t_cub *c, t_resized status, const char *png_src)
 {
 	mlx_texture_t	*texture;
 	mlx_image_t		*image;
 
 	if (!c->mlx)
-	cub3d_ends(c, "MLX creating failed", 1);
+		cub3d_ends(c, "MLX creating failed", 1);
 	texture = mlx_load_png(png_src);
 	if (!texture)
 	{

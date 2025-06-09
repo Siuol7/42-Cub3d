@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/30 00:19:36 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/03 01:58:12 by caonguye         ###   ########.fr       */
+/*   Created: 2025/05/24 17:52:33 by tripham           #+#    #+#             */
+/*   Updated: 2025/06/09 12:18:57 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	exec_clean(t_cub* c)
+void	exec_clean(t_cub *c)
 {
 	clean_assets(c, &c->assets);
 }

@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 21:40:40 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/08 15:00:53 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/09 12:18:15 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ static void	render_y(t_cub *c, int32_t *y, int32_t *offset_y)
 			*offset_y = c->map.height;
 	}
 	*y = (*y / M_PIXEL) * M_PIXEL;
-
 }
 
 void	render_minimap(t_cub *c)

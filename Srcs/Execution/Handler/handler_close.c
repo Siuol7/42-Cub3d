@@ -6,13 +6,13 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 02:03:54 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/06 00:17:09 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/09 09:56:43 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	handler_close(void* data)
+void	handler_close(void *data)
 {
 	t_cub	*c;
 

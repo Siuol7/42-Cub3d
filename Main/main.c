@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:55:42 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/06 21:26:41 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/08 22:04:33 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,10 @@ int	main(int ac, char **av)
 	if (fd < 0)
 		return (EXIT_FAILURE);
 	if (read_map(fd, &cub))
-	{
-		close(fd);
-		ft_printf_fd(2, "Error:\nFailed to read map!\n");
 		return (EXIT_FAILURE);
-	}
+	cub.map.width = cub.map.max_cols * M_PIXEL;
+	cub.map.height = cub.map.max_rows * M_PIXEL;
 	close(fd);
-	cub.map.width = 1056;
-	cub.map.height = 448;
-	printf("map size: %d x %d\n", cub.map.width, cub.map.height);
 	system_init(&cub);
 	mlx_loop(cub.mlx);
 	cub3d_ends(&cub, "Done", 0);

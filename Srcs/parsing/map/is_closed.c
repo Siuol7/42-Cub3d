@@ -6,7 +6,7 @@
 /*   By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 18:00:54 by tripham           #+#    #+#             */
-/*   Updated: 2025/05/26 19:37:52 by tripham          ###   ########.fr       */
+/*   Updated: 2025/05/27 21:36:45 by tripham          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,44 +56,53 @@ char	**assign_newgrid(t_map *map, int offset)
 	return (res);
 }
 
-static int	flood_fill(char **grid, int row, int col, int mode)
+static int	bloodfill_player(char **grid, int row, int col)
 {
-	if (row < 0 || col < 0 || !grid[row] || !grid[row][col])
-		return (mode == 0);
-	if (grid[row][col] == '1' || grid[row][col] == ' ')
-		return (0);
-	if (mode == 1 && grid[row][col] == '0')
-		grid[row][col] = '1';
-	else if (mode == 0 && grid[row][col] == '0')
+	if (row < 0 || col < 0 || !grid[row] || !grid[row][col]
+		|| grid[row][col] == ' ')
 		return (1);
+	if (grid[row][col] == '1')
+		return (0);
 	grid[row][col] = '1';
-	return (flood_fill(grid, row + 1, col, mode)
-		|| flood_fill(grid, row - 1, col, mode)
-		|| flood_fill(grid, row, col + 1, mode)
-		|| flood_fill(grid, row, col - 1, mode));
+	return (bloodfill_player(grid, row + 1, col)
+		|| bloodfill_player(grid, row - 1, col)
+		|| bloodfill_player(grid, row, col + 1)
+		|| bloodfill_player(grid, row, col - 1));
 }
 
-bool	is_closed(t_map *map, t_dpoint start)
+static int	bloodfill_wall(char **grid, int row, int col)
 {
-	char	**temp;
+	if (row < 0 || col < 0 || !grid[row] || !grid[row][col]
+		|| grid[row][col] == '1')
+		return (0);
+	if (grid[row][col] == '0')
+		return (1);
+	grid[row][col] = '1';
+	return (bloodfill_wall(grid, row + 1, col)
+		|| bloodfill_wall(grid, row - 1, col)
+		|| bloodfill_wall(grid, row, col + 1)
+		|| bloodfill_wall(grid, row, col - 1));
+}
+
+bool	is_closed(t_map *map, t_dpoint pos)
+{
+	char	**tmp;
 	int		x;
 	int		y;
 
-	temp = assign_newgrid(map, 1);
-	if (!temp)
+	y = (int)(pos.y / CELL_PX) + 1;
+	x = (int)(pos.x / CELL_PX) + 1;
+	tmp = assign_newgrid(map, 1);
+	if (!tmp)
 		return (error_ret("assign_newgrid failed", false));
-	y = (int)(start.y / CELL_PX) + 1;
-	x = (int)(start.x / CELL_PX) + 1;
-	if (flood_fill(temp, y, x, 1) || flood_fill(temp, 0, 0, 0))
-	{
-		ft_clean_2d(&temp);
-		return (error_ret("Map is unclosed by walls.", false));
-	}
-	ft_clean_2d(&temp);
-	temp = assign_newgrid(map, 0);
-	if (!map->grid)
-		return (error_ret("assign_newgrid failed", false));
+	if (bloodfill_player(tmp, y, x) || bloodfill_wall(tmp, 0, 0))
+		return (ft_clean_2d(&tmp), error_ret("Map is unclosed by walls.",
+				false));
+	ft_clean_2d(&tmp);
+	tmp = assign_newgrid(map, 0);
+	if (!tmp)
+		return (error_ret("assign_newgrid failed (clean)", false));
 	ft_clean_2d(&map->grid);
-	map->grid = temp;
+	map->grid = tmp;
 	return (true);
 }

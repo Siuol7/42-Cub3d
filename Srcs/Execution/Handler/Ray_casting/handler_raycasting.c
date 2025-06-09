@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 17:04:39 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/05 23:14:44 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/09 12:16:16 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static double	rc_angle(double angle, double i)
 {
-	return (move_angle_rescale(angle + (PI / 3) *
-			(0.5 - i / (WIDTH - 1))));
+	return (move_angle_rescale(angle + (PI / 3)
+			* (0.5 - i / (WIDTH - 1))));
 }
 
 static void	rc_ray_init(t_ray *ray, t_player player, int i)
@@ -26,7 +26,7 @@ static void	rc_ray_init(t_ray *ray, t_player player, int i)
 	ray->angle = rc_angle(player.angle, (double)i);
 	ray->dir = (t_dpoint){cos(ray->angle), sin(ray->angle)};
 	ray->start = (t_dpoint){player.cur_pos.x + offset,
-				player.cur_pos.y + offset};
+		player.cur_pos.y + offset};
 	ray->end = (t_dpoint){ray->start.x, ray->start.y};
 	ray->hit_cell = (t_point){ray->start.y / CELL_PX, ray->start.x / CELL_PX};
 }

@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 18:15:21 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/06 20:18:21 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/09 12:19:40 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	hook_init(t_cub *c)
 	mlx_close_hook(c->mlx, handler_close, c);
 }
 
-static void mlx_packs_init(t_cub *c)
+static void	mlx_packs_init(t_cub *c)
 {
 	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
 	c->mlx = mlx_init(WIDTH, HEIGHT, "Cub3d", true);

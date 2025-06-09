@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 10:33:05 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/08 13:16:55 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/09 12:21:10 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,3 @@ void	assets_framing(t_cub *c, t_assets *as)
 	assets_frame(c, &as->m_space, CELL_PX, CELL_PX);
 	assets_frame(c, &as->m_map_bg, M_WIDTH, M_HEIGHT);
 }
-

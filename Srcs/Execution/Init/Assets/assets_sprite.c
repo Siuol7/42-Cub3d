@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 20:08:50 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/06 10:40:12 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/09 12:22:41 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ static void	assets_pixelcpy(mlx_image_t *src, mlx_image_t *dst,
 	uint32_t	h;
 	uint32_t	y;
 
-
 	y = 0;
 	h = as->sprite->sprite_h;
 	w = as->sprite->sprite_w;
@@ -34,10 +33,10 @@ static void	assets_pixelcpy(mlx_image_t *src, mlx_image_t *dst,
 	}
 }
 
-void	assets_copy_paste(t_cub *c, t_assets* as, int i)
+void	assets_copy_paste(t_cub *c, t_assets *as, int i)
 {
-	mlx_image_t*	src;
-	mlx_image_t*	dst;
+	mlx_image_t	*src;
+	mlx_image_t	*dst;
 
 	(void)c;
 	src = as->sprite->sprite_sheet;
@@ -53,7 +52,7 @@ void	assets_sprite_framing(t_cub *c, t_assets *as)
 	while (i < as->sprite->frame_cnt)
 	{
 		as->sprite->frame[i] = mlx_new_image(c->mlx,
-			as->sprite->sprite_w, as->sprite->sprite_h);
+				as->sprite->sprite_w, as->sprite->sprite_h);
 		if (!as->sprite->frame[i])
 			cub3d_ends(c, "Assets init: mlx_new_image", 0);
 		assets_copy_paste(c, as, i);
@@ -61,7 +60,7 @@ void	assets_sprite_framing(t_cub *c, t_assets *as)
 	}
 }
 
-t_sprite	*assets_sprite_frame(t_cub *c,int size,	t_resized status,
+t_sprite	*assets_sprite_frame(t_cub *c, int size, t_resized status,
 	char *png_src)
 {
 	mlx_image_t	*img;
@@ -79,7 +78,7 @@ t_sprite	*assets_sprite_frame(t_cub *c,int size,	t_resized status,
 	sprite->sprite_w = img->width / size;
 	sprite->sprite_h = img->height;
 	sprite->frame_cnt = size;
-	sprite->frame = (mlx_image_t **)ft_calloc(size, sizeof(mlx_image_t*));
+	sprite->frame = (mlx_image_t **)ft_calloc(size, sizeof(mlx_image_t *));
 	if (!sprite->frame)
 		cub3d_ends(c, "Sprite frame: Allocating failed", 0);
 	return (sprite);

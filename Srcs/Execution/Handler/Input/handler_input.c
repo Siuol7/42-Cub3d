@@ -6,13 +6,13 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 01:39:42 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/03 01:43:05 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/09 10:43:50 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	handler_input(t_cub* c)
+void	handler_input(t_cub *c)
 {
 	input_keyboard(c);
 	input_mouse(c);
