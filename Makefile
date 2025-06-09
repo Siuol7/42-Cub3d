@@ -6,7 +6,7 @@
 #    By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/18 22:10:11 by tripham           #+#    #+#              #
-#    Updated: 2025/06/08 22:34:48 by caonguye         ###   ########.fr        #
+#    Updated: 2025/06/09 13:11:35 by caonguye         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -93,21 +93,16 @@ NAME       = cub3D
 
 MLX_LINK   = -Llibs/MLX42/build -lmlx42 -lglfw -ldl -pthread -lm
 
-all: mlx42 $(LIBFT) $(PRINTF) $(NAME)
+all: .mlx42 $(LIBFT) $(PRINTF) $(NAME)
 
-mlx42:
-	@ if [ ! -d "$(MLX42_DIR)" ]; then \
-	    printf "Setting up MLX42…\n"; \
-	    git clone https://github.com/codam-coding-college/MLX42.git $(MLX42_DIR) > /dev/null 2>&1; \
-	    mkdir -p $(MLX42_DIR)/build; \
-	    ( \
-	      cd $(MLX42_DIR)/build && \
-	      cmake .. > /dev/null 2>&1 && \
-	      cmake --build . -j4 > /dev/null 2>&1 \
-	    ); \
-	    rm -rf $(MLX42_DIR)/.git; \
-	    printf "Done\n"; \
-	fi
+$(MLX42)	: .mlx42
+.mlx42		:
+			@rm -rf $(MLX42_DIR)
+			@git clone https://github.com/codam-coding-college/MLX42.git $(MLX42_DIR)
+			@cd $(MLX42_DIR) && mkdir -p build && cd build && cmake .. && cmake --build . -j4
+			@cd ..
+			@rm -rf $(MLX42_DIR)/.git
+			@touch .mlx42
 
 $(LIBFT):
 	@$(MAKE)  -s -C $(LIBFT_DIR)
@@ -117,36 +112,51 @@ $(PRINTF):
 
 $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LIBFT) $(PRINTF) $(MLX_LINK) -o $@
+	@printf "\033[1;33m42VN-Pasila \033[1;32m💻 Launching"
+	@for i in 1 2 3; do \
+		printf "\033[0;32m."; sleep 0.15; \
+	done; \
+	for i in 1 2 3; do \
+		printf "\b \b"; sleep 0.15; \
+	done; \
+	for i in 1 2 3; do \
+		printf "\033[0;32m."; sleep 0.15; \
+	done; \
+	for i in 1 2 3; do \
+		printf "\b \b"; sleep 0.15; \
+	done; \
+	printf "\033[0m\n"
 
-%.o:%.c
+$(OBJS): %.o: %.c
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
-
-# ${NAME}	:	${OBJS} ${LIBFT} ${PRINTF}
-# 		@printf "\033[1;32m💻Launching Cub3D-42VN-Pasila"
-# 		@for i in 1 2 3; do \
-# 			printf "\033[0;32m."; sleep 0.3; \
-# 		done; \
-# 		for i in 1 2 3; do \
-# 			printf "\b \b"; sleep 0.3; \
-# 		done; \
-# 		for i in 1 2 3; do \
-# 			printf "\033[0;32m."; sleep 0.3; \
-# 		done; \
-# 		for i in 1 2 3; do \
-# 			printf "\b \b"; sleep 0.3; \
-# 		done; \
-# 		printf "\033[0m\n"
 
 clean:
 	@$(MAKE) clean -s -C $(LIBFT_DIR)
 	@$(MAKE) clean -s -C $(PRINTF_DIR)
 	@rm -f $(OBJS)
+	@rm -f .mlx42
 
 fclean: clean
+		@printf "\033[1;32m🧹️ Cleaning"
+		@for i in 1 2 3; do \
+			printf "\033[0;32m."; sleep 0.15; \
+		done; \
+		for i in 1 2 3; do \
+			printf "\b \b"; sleep 0.15; \
+		done; \
+		for i in 1 2 3; do \
+			printf "\033[0;32m."; sleep 0.15; \
+		done; \
+		for i in 1 2 3; do \
+			printf "\b \b"; sleep 0.15; \
+		done; \
+		printf "\033[0m\n"
+		@echo "\033[1;32m🎉 Done"
 	@$(MAKE) fclean -s -C $(LIBFT_DIR)
 	@$(MAKE) fclean -s -C $(PRINTF_DIR)
 	@rm -f $(NAME)
 	@rm -rf libs
+	@rm -f .mlx42
 
 re: fclean all
 
