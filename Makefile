@@ -6,7 +6,7 @@
 #    By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/18 22:10:11 by tripham           #+#    #+#              #
-#    Updated: 2025/06/09 13:11:35 by caonguye         ###   ########.fr        #
+#    Updated: 2025/06/09 13:40:58 by caonguye         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -95,14 +95,19 @@ MLX_LINK   = -Llibs/MLX42/build -lmlx42 -lglfw -ldl -pthread -lm
 
 all: .mlx42 $(LIBFT) $(PRINTF) $(NAME)
 
-$(MLX42)	: .mlx42
-.mlx42		:
-			@rm -rf $(MLX42_DIR)
-			@git clone https://github.com/codam-coding-college/MLX42.git $(MLX42_DIR)
-			@cd $(MLX42_DIR) && mkdir -p build && cd build && cmake .. && cmake --build . -j4
-			@cd ..
-			@rm -rf $(MLX42_DIR)/.git
-			@touch .mlx42
+.mlx42:
+	@printf "\033[1;33mMLX\033[1;32m 💻Setting up…\n"
+	@rm -rf $(MLX42_DIR)
+	@{ \
+		git clone https://github.com/codam-coding-college/MLX42.git $(MLX42_DIR) > /dev/null 2>&1 && \
+		cd $(MLX42_DIR) && \
+		mkdir -p build && cd build && \
+		cmake .. > /dev/null 2>&1 && \
+		cmake --build . -j4 > /dev/null 2>&1; \
+	} || { echo "\033[0;31m❌ MLX42 build failed\033[0m"; exit 1; }
+	@rm -rf $(MLX42_DIR)/.git
+	@touch .mlx42
+	@echo "\033[\033[1;33mMLX\033[1;32m ✅Done"
 
 $(LIBFT):
 	@$(MAKE)  -s -C $(LIBFT_DIR)
@@ -112,7 +117,7 @@ $(PRINTF):
 
 $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LIBFT) $(PRINTF) $(MLX_LINK) -o $@
-	@printf "\033[1;33m42VN-Pasila \033[1;32m💻 Launching"
+	@printf "\033[1;33m42VN-Pasila \033[1;32m 💻Launching"
 	@for i in 1 2 3; do \
 		printf "\033[0;32m."; sleep 0.15; \
 	done; \
@@ -137,7 +142,7 @@ clean:
 	@rm -f .mlx42
 
 fclean: clean
-		@printf "\033[1;32m🧹️ Cleaning"
+		@printf "\033[1;33m42VN-Pasila\033[1;32m 💻Cleaning"
 		@for i in 1 2 3; do \
 			printf "\033[0;32m."; sleep 0.15; \
 		done; \
@@ -151,7 +156,7 @@ fclean: clean
 			printf "\b \b"; sleep 0.15; \
 		done; \
 		printf "\033[0m\n"
-		@echo "\033[1;32m🎉 Done"
+		@echo "\033[1;33m42VN-Pasila\033[1;32m ✅Done"
 	@$(MAKE) fclean -s -C $(LIBFT_DIR)
 	@$(MAKE) fclean -s -C $(PRINTF_DIR)
 	@rm -f $(NAME)
