@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 17:39:34 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/09 12:19:24 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/09 13:57:14 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ static void	clean_png(t_cub *c, t_assets *as)
 
 static void	clean_draw(t_cub *c, t_assets *as)
 {
+	if (as->player)
+		mlx_delete_image(c->mlx, as->player);
 	if (as->ceiling)
 		mlx_delete_image(c->mlx, as->ceiling);
 	if (as->floor)
