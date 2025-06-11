@@ -3,7 +3,7 @@ SO ./assets/textures/south.png
 WE ./assets/textures/west.png
 EA ./assets/textures/east.png
 
-F 102,255,102
+F 190,230,245
 C 204,255,255
 
 

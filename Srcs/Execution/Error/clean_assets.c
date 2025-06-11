@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 17:39:34 by caonguye          #+#    #+#             */
-/*   Updated: 2025/06/09 17:18:44 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/06/11 10:58:47 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 static void	clean_rays(t_cub *c)
 {
-	int i;
+	int	i;
 
 	if (!c->rays)
-		return;
+		return ;
 	i = 0;
 	while (i < WIDTH)
 		free(c->rays[i++]);
