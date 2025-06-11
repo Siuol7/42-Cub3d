@@ -6,7 +6,7 @@
 #    By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/18 22:10:11 by tripham           #+#    #+#              #
-#    Updated: 2025/06/09 13:40:58 by caonguye         ###   ########.fr        #
+#    Updated: 2025/06/11 10:15:28 by caonguye         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -115,7 +115,7 @@ $(LIBFT):
 $(PRINTF):
 	@$(MAKE)  -s -C $(PRINTF_DIR)
 
-$(NAME): $(OBJS)
+$(NAME): .mlx42 $(LIBFT) $(PRINTF) $(OBJS)
 	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LIBFT) $(PRINTF) $(MLX_LINK) -o $@
 	@printf "\033[1;33m42VN-Pasila \033[1;32m 💻Launching"
 	@for i in 1 2 3; do \
