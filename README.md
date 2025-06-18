@@ -6,6 +6,7 @@
 
 - **Cao Tan** – Parsing & Map logic ([GitHub](https://github.com/Siuol7))
 - **Triet Pham** – Raycasting & Rendering ([GitHub](https://github.com/hihi-louis))
+- **Uyen Tran** - Sprite editor
 
 ## 🎯 Overview
 
